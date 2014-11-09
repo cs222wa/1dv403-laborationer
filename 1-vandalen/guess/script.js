@@ -14,15 +14,18 @@ window.onload = function(){
 
 
 		// Returnera exempelvis:
-
+	if (number === secret){
 		return console.log("Grattis! Det hemliga talet var (secret) och du behövde (antal gissningar) för att lista ut det.");
-
+	}
+	else if (number < secret){
 		return console.log("Tyvärr, det hemliga talet är större än så. Gissa högre!")
-
+  }
+	else if (number > secret){
 		return console.log("Tyvärr, det hemliga talet är mindre än så. Gissa lägre!")
-
+	}
+	else (0 < number || number > 100){
 		return console.log("Det angivna talet ligger inte inom intervallet 0-100. Försök igen.")
-
+	}
 
 		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
 		// [false, "Det hemliga talet är högre!"]
