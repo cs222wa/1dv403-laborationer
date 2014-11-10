@@ -2,32 +2,31 @@
 
 window.onload = function(){
 
-	// I denna funktion ska du skriva koden för att hantera "spelet"
+// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
 		// Plats för förändring.
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
 
 
-	var str = "HallA VärLdeN";
-	console.log(str);
-		var rpla = str.replace( /[Aa]/g, '#');  //ersätter alla "a" och "A" med en "#"
+		var myStr = str.replace(/[Aa]/g, '#');  //ersätter alla "a" med en "#"
 
 		// //loopar igenom strängen och skriver ut var bokstav för sig.
-		for (var i = 0, length = rplA.length; i < length; i++){
+		for (var i = 0, length = myStr.length; i < length; i++){
+			var stringChar = myStr[i];
 
-
-			 if(rplA[i] == rplA[i].toUpperCase()){
-			     rplA[i] = rplA[i].toLowerCase();
-			 }
-			 if(rplA[i] == rplA[i].toLowerCase()){
-			     rplA[i] = rplA[i].toUpperCase();
-			 }
-
-		 console.log(rplA[i]);
+			if (stringChar == stringChar.toUpperCase()){
+				stringChar = stringChar.toLowerCase();
+				var newString = newString + stringChar;
+			}
+			if(stringChar == stringChar.toLowerCase()){
+				stringChar = stringChar.toUpperCase();
+				var newString = newString + stringChar;
+			}
 		}
+		console.log(newString);
 
-		console.log(rplA);
+
 
 	//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
 	// try{
