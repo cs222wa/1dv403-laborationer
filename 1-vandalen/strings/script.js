@@ -9,13 +9,25 @@ window.onload = function(){
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
 
 
-	var rpla = str.replace(/a/g, '#');  //ersätter alla "a" med en "#"
-	var rplA = rpla.replace(/A/g, '#'); //ersätter alla "A" med en "#"
+	var str = "HallA VärLdeN";
+	console.log(str);
+		var rpla = str.replace( /[Aa]/g, '#');  //ersätter alla "a" och "A" med en "#"
 
-	// //loopar igenom strängen och skriver ut var bokstav för sig.
-	// for (var i = 0, length = str.length; i < length; i++){
-	// 	console.log(str[i]);
-	// }
+		// //loopar igenom strängen och skriver ut var bokstav för sig.
+		for (var i = 0, length = rplA.length; i < length; i++){
+
+
+			 if(rplA[i] == rplA[i].toUpperCase()){
+			     rplA[i] = rplA[i].toLowerCase();
+			 }
+			 if(rplA[i] == rplA[i].toLowerCase()){
+			     rplA[i] = rplA[i].toUpperCase();
+			 }
+
+		 console.log(rplA[i]);
+		}
+
+		console.log(rplA);
 
 	//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
 	// try{
