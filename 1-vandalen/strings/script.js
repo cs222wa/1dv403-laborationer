@@ -8,34 +8,23 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
 
-	//ändra alla versaler i argumentet till gemener och alla gemener i argumentet till versaler
-	//även å, ä, ö ska påverkas.
 
+	var rpla = str.replace(/a/g, '#');  //ersätter alla "a" med en "#"
+	var rplA = rpla.replace(/A/g, '#'); //ersätter alla "A" med en "#"
 
-	strToUpper = str.toUpperCase();  //ändrar alla gemener till versaler
-	strToLower = str.toLowerCase();	//ändrar alla versaler till gemener
-
-	strCombined = (strToUpper + strToLower);	//slå ihop de två nya strängarna
-
-	// alla a och A == #
-
-	result1 = strCombined.replace(/a/g, “#”);		//omvandla alla gemena "a" till "#"
-	result2 = result.replace(/A/g, “#”);				//omvandla alla versala "A" till "#"
-
-	finalResult = (result1 + result2);					//Slå ihop de två resultaten
-
-
-	return finalResult;			//return text efter omvandlingen är klar.
-
+	// //loopar igenom strängen och skriver ut var bokstav för sig.
+	// for (var i = 0, length = str.length; i < length; i++){
+	// 	console.log(str[i]);
+	// }
 
 	//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
-	try{
-		convertString == NaN
-		throw new FormatException();
-	}
-	catch (FormatException){
-		return ["Du måste skriva in ett ord/ en mening i text-fältet."];
-	}
+	// try{
+	// 	convertString == number;
+	// 	throw new FormatException();
+	// }
+	// catch (FormatException){
+	// 	return ["Du måste skriva in ett ord/ en mening i text-fältet."];
+	// }
 
 	};
 	// ------------------------------------------------------------------------------
