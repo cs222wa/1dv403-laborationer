@@ -8,38 +8,34 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
 
-//ändra alla versaler i argumentet till gemener och alla gemener i argumentet till versaler
-//även å, ä, ö ska påverkas.
+	//ändra alla versaler i argumentet till gemener och alla gemener i argumentet till versaler
+	//även å, ä, ö ska påverkas.
 
 
-convertString.toUpperCase();
-convertString.toLowerCase();
+	strToUpper = str.toUpperCase();  //ändrar alla gemener till versaler
+	strToLower = str.toLowerCase();	//ändrar alla versaler till gemener
 
-// alla a och A == #
+	strCombined = (strToUpper + strToLower);	//slå ihop de två nya strängarna
 
-converString.replace(/a/g, “#”);
+	// alla a och A == #
 
-//return text efter omvandlingen är klar.
+	result1 = strCombined.replace(/a/g, “#”);		//omvandla alla gemena "a" till "#"
+	result2 = result.replace(/A/g, “#”);				//omvandla alla versala "A" till "#"
 
-
-//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
-try{
-	convertString == NaN
-	throw new FormatException();
-}
-catch (FormatException){
-	console.log("Du måste skriva in ett ord/ en mening i text-fältet.");
-}
+	finalResult = (result1 + result2);					//Slå ihop de två resultaten
 
 
+	return finalResult;			//return text efter omvandlingen är klar.
 
 
-//var stringValue = “hello world”;
-
-//alert(stringValue.toUpperCase());        //”HELLO WORLD”
-
-//alert(stringValue.toLowerCase());        //”hello world”
-
+	//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
+	try{
+		convertString == NaN
+		throw new FormatException();
+	}
+	catch (FormatException){
+		return ["Du måste skriva in ett ord/ en mening i text-fältet."];
+	}
 
 	};
 	// ------------------------------------------------------------------------------
