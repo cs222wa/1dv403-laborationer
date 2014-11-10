@@ -4,14 +4,41 @@ window.onload = function(){
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		// Plats för förändring.		
+		// Plats för förändring.
 		// Returnera den konverterade strängen.
-		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
+		// Vid fel, kasta ett undantag med ett meddelande till användaren.
+
+//ändra alla versaler i argumentet till gemener och alla gemener i argumentet till versaler
+//även å, ä, ö ska påverkas.
+
+
+convertString.toUpperCase();
+convertString.toLowerCase();
+
+// alla a och A == #
+
+converString.replace(/a/g, “#”);
+
+//return text efter omvandlingen är klar.
+
+
+//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
+try{
+	convertString == NaN
+	throw new FormatException();
+}
+catch (FormatException){
+	console.log("Du måste skriva in ett ord/ en mening i text-fältet.");
+}
 
 
 
 
+//var stringValue = “hello world”;
+
+//alert(stringValue.toUpperCase());        //”HELLO WORLD”
+
+//alert(stringValue.toLowerCase());        //”hello world”
 
 
 	};
@@ -31,12 +58,12 @@ window.onload = function(){
 
 		try {
 			var answer = convertString(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"
-			p.innerHTML = answer;		// Skriver ut texten från arrayen som skapats i funktionen.	
+			p.innerHTML = answer;		// Skriver ut texten från arrayen som skapats i funktionen.
 		} catch (error){
 			p.classList.add( "error"); // Växla CSS-klass, IE10+
 			p.innerHTML = error.message;
 		}
-	
+
 	});
 
 
