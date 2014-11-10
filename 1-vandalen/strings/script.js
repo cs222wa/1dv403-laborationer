@@ -11,22 +11,19 @@ window.onload = function(){
 
 		var myStr = str.replace(/[Aa]/g, '#');  //ersätter alla "a" med en "#"
 
-		// //loopar igenom strängen och skriver ut var bokstav för sig.
+	 //loopar igenom strängen och skriver ut var bokstav för sig.
 		for (var i = 0, length = myStr.length; i < length; i++){
 			var stringChar = myStr[i];
-
+			var newString;
 			if (stringChar == stringChar.toUpperCase()){
 				stringChar = stringChar.toLowerCase();
-				var newString = newString + stringChar;
+				newString += stringChar;
 			}
-			if(stringChar == stringChar.toLowerCase()){
+			else if(stringChar == stringChar.toLowerCase()){
 				stringChar = stringChar.toUpperCase();
-				var newString = newString + stringChar;
+				newString += stringChar;
 			}
 		}
-		console.log(newString);
-
-
 
 	//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
 	// try{
@@ -36,6 +33,8 @@ window.onload = function(){
 	// catch (FormatException){
 	// 	return ["Du måste skriva in ett ord/ en mening i text-fältet."];
 	// }
+
+	return newString;
 
 	};
 	// ------------------------------------------------------------------------------
