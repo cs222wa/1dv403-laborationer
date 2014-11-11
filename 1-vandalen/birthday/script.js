@@ -7,6 +7,14 @@ window.onload = function(){
 		//Om inte inmatat datum är på formen "ÅÅÅÅ-MM-DD" så ska du kasta ett undantag med ett lämpligt felmeddelande.
 		//Utifrån den inmatade strängen ska du i funktionen räkna ut hur många dagar det är kvar till att användaren fyller år och returnera detta.
 
+	try{
+		if(date !== ÅÅÅÅ-MM-DD){
+			throw new FormatException();
+		}
+	}
+	catch(FormatException){
+		return ["Du måste skriva in ett datum i formatet: 'ÅÅÅÅ-MM-DD'"];
+	}
 
 		//Betrakta speciellt hur du ska hantera följande:
 		//Användaren kan redan ha fyllt år? Exempelvis i mars.
