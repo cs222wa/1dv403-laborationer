@@ -2,14 +2,32 @@
 
 window.onload = function(){
 
-	
+
 	var birthday = function(date){
-		
+		//Om inte inmatat datum är på formen "ÅÅÅÅ-MM-DD" så ska du kasta ett undantag med ett lämpligt felmeddelande.
+		//Utifrån den inmatade strängen ska du i funktionen räkna ut hur många dagar det är kvar till att användaren fyller år och returnera detta.
 
 
-			// Din kod här.
+		//Betrakta speciellt hur du ska hantera följande:
+		//Användaren kan redan ha fyllt år? Exempelvis i mars.
+		//Vad händer vid skottår?
+		//Fundera kring om din kod uppför sig olika före eller efter klockan 12.00 på dagen.
+		// Din kod här.
 
 
+
+
+
+		// Skapa utifrån det inlästa datumet ett datumobjekt som representerar när användaren fyller år nästa gång.
+		// Utgå ifrån att användaren fyller år i år.
+		// Fundera på hur du kan få fram aktuellt år utan att skriva in det i klartext.
+		// Skapa sedan ytterligare ett datumobjekt med dagens datum.
+		// Genom att subtrahera antalet millisekunder till dags dato från antalet millisekunder
+		// då du fyller år får du skillnaden mellan datumen.
+		// Kan du via denna skillnad se om användaren fyllt år?
+		// Om så vad blir då nästa steg?
+		// När du fått detta att fungera kan du sedan omvandla antalet millisekunder
+		//till dagar och du är klar med uppgiften.
 
 
 	};
@@ -44,7 +62,7 @@ window.onload = function(){
 			p.classList.add( "error"); // Växla CSS-klass, IE10+
 			p.innerHTML = error.message;
 		}
-	
+
 	});
 
 
