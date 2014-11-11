@@ -17,8 +17,21 @@ window.onload = function(){
 			throw new Error("Du måste skriva in ett datum i formatet: 'ÅÅÅÅ-MM-DD'"); //Om användaren inte matar in några siffor så visas ett felmeddelande.
 		}
 
-	
+	var days = todaysDate.getDate() - birthDate.getDate();
+	var months = todaysDate.getMonth() - birthDate.getMonth();
 
+	if (days == 0 && months ==0){
+		return 0;
+	}
+
+	if (days === -1 && months === 0) {
+		return 1;
+	}
+
+
+	if (birthDate < todaysDate){
+		//ställ om "klockan"?
+	}
 
 		return daysUntilBirthday;
 
