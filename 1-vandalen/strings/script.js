@@ -7,37 +7,29 @@ window.onload = function(){
 		// Plats för förändring.
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
-
-	//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
+		//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
 	try{
-		if(str == [""]){
+		if(str == [""]){							//Om strängen str är tom kastas ett undantag...
 			throw new FormatException();
 		}
 	}
 	catch (FormatException){
-		return ["Du måste skriva in ett ord/ en mening i text-fältet."];
+		return ["Du måste skriva in ett ord/ en mening i text-fältet."];		//.. som fångas upp och ett felmeddelande skrivs ut.
 	}
-
 	var myStr = str.replace(/[Aa]/g, '#');  //ersätter alla "a" med en "#"
-
-	 //loopar igenom strängen och skriver ut var bokstav för sig.
-	for (var i = 0, length = myStr.length; i < length; i++){
+	var newString = " ";
+	for (var i = 0, length = myStr.length; i < length; i++){	//loopar igenom strängen och skriver ut var bokstav för sig.
 		var stringChar = myStr[i];
-		var newString;
-		if (stringChar == stringChar.toUpperCase()){
-			stringChar = stringChar.toLowerCase();
-			newString += stringChar;
+		if (stringChar == stringChar.toUpperCase()){  //Om bokstaven är Versal ändras den till Gemen.
+			stringChar = stringChar.toLowerCase();			//Bokstaven sparas i en ny sträng
+			newString += stringChar;										//Den gamla strängen och den nya strängen med den ändrade bokstaven slås ihop.
 		}
-		else if(stringChar == stringChar.toLowerCase()){
-			stringChar = stringChar.toUpperCase();
-			newString += stringChar;
+		else if(stringChar == stringChar.toLowerCase()){ //Om bokstaven är Gemen ändras den till Versal
+			stringChar = stringChar.toUpperCase();			 	 //Bokstaven sparas i en ny sträng
+			newString += stringChar;											 //Den gamla strängen och den nya strängen med den ändrade bokstaven slås ihop.
 		}
 	}
-
-
-
-	return newString;
-
+	return newString;		//Den nya, sammanslagna strängen returneras.
 	};
 	// ------------------------------------------------------------------------------
 
