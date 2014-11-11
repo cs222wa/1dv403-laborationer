@@ -6,25 +6,26 @@ window.onload = function(){
 	var birthday = function(date){
 		//Om inte inmatat datum är på formen "ÅÅÅÅ-MM-DD" så ska du kasta ett undantag med ett lämpligt felmeddelande.
 		//Utifrån den inmatade strängen ska du i funktionen räkna ut hur många dagar det är kvar till att användaren fyller år och returnera detta.
+		//Din kod här.
 
-	try{
-		if(date !== ÅÅÅÅ-MM-DD){
-			throw new FormatException();
+		var birthDate = new Date(date); // Nytt date-objekt skapas som tar det inmatade datumet från användaren som argument.
+		var todaysDate = new Date(); //Nytt date-objekt skapas med dagens datum.
+		var daysUntilBirthday = todaysDate-birthDate;
+
+
+		if(isNaN(birthDate)){
+			throw new Error("Du måste skriva in ett datum i formatet: 'ÅÅÅÅ-MM-DD'");
 		}
-	}
-	catch(FormatException){
-		return ["Du måste skriva in ett datum i formatet: 'ÅÅÅÅ-MM-DD'"];
-	}
 
-	var birthDate = new Date(date); // Nytt date-objekt skapas som tar det inmatade datumet från användaren som argument.
-	var todaysDate = new Date(); //Nytt date-objekt skapas med dagens datum.
+
+
 
 
 		//Betrakta speciellt hur du ska hantera följande:
 		//Användaren kan redan ha fyllt år? Exempelvis i mars.
 		//Vad händer vid skottår?
 		//Fundera kring om din kod uppför sig olika före eller efter klockan 12.00 på dagen.
-		// Din kod här.
+
 
 
 
