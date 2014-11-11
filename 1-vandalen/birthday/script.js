@@ -2,67 +2,28 @@
 
 window.onload = function(){
 
-
 	var birthday = function(date){
 		//Om inte inmatat datum är på formen "ÅÅÅÅ-MM-DD" så ska du kasta ett undantag med ett lämpligt felmeddelande.
 		//Utifrån den inmatade strängen ska du i funktionen räkna ut hur många dagar det är kvar till att användaren fyller år och returnera detta.
 		//Din kod här.
-
 		var birthDate = new Date(date); // Nytt date-objekt skapas som tar det inmatade datumet från användaren som argument.
 		var todaysDate = new Date(); //Nytt date-objekt skapas med dagens datum.
-		var daysUntilBirthday = todaysDate.getTime() - birthDate.getTime();   //get.Time används för att räkna ut millisekunderna mellan de två datumen.
-
-
+		var daysUntilBirthday = (todaysDate.getTime() - birthDate.getTime())/(1000*60*60*24);   //get.Time används för att räkna ut millisekunderna mellan de två datumen.
 		if(isNaN(birthDate)){
 			throw new Error("Du måste skriva in ett datum i formatet: 'ÅÅÅÅ-MM-DD'"); //Om användaren inte matar in några siffor så visas ett felmeddelande.
 		}
-
 	var days = todaysDate.getDate() - birthDate.getDate();
 	var months = todaysDate.getMonth() - birthDate.getMonth();
-
-	if (days == 0 && months ==0){
+	if (days === 0 && months === 0){
 		return 0;
 	}
-
 	if (days === -1 && months === 0) {
 		return 1;
 	}
-
-
 	if (birthDate < todaysDate){
-		//ställ om "klockan"?
+		birthDate.setFullYear(todaysDate.getFullYear() + 1);
 	}
-
-		return daysUntilBirthday;
-
-
-
-		//Betrakta speciellt hur du ska hantera följande:
-		//Användaren kan redan ha fyllt år? Exempelvis i mars.
-		//Vad händer vid skottår? (- get.Time tar hand om det?)
-		//Fundera kring om din kod uppför sig olika före eller efter klockan 12.00 på dagen.
-
-
-
-		// Utgå ifrån att användaren fyller år i år.
-		// Fundera på hur du kan få fram aktuellt år utan att skriva in det i klartext.
-
-		// Genom att subtrahera antalet millisekunder till dags dato från antalet millisekunder
-		// då du fyller år får du skillnaden mellan datumen.
-		//För att ta reda på hur många millisekunder som förflutit
-		//sedan 1 januari, 1970 till ett visst datum
-		//går det bra att använda följande funktion på en Date-variabel: getTime()
-
-
-		// Kan du via denna skillnad se om användaren fyllt år?
-		// Om så vad blir då nästa steg?
-
-		// När du fått detta att fungera kan du sedan omvandla antalet millisekunder
-		//till dagar och du är klar med uppgiften.
-
-
-
-
+	return Math.round(Math.abs(daysUntilBirthday));
 	};
 	// ------------------------------------------------------------------------------
 
