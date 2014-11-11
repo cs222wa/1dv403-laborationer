@@ -10,41 +10,44 @@ window.onload = function(){
 
 		var birthDate = new Date(date); // Nytt date-objekt skapas som tar det inmatade datumet från användaren som argument.
 		var todaysDate = new Date(); //Nytt date-objekt skapas med dagens datum.
-		var daysUntilBirthday = todaysDate-birthDate;
+		var daysUntilBirthday = todaysDate.getTime() - birthDate.getTime();   //get.Time används för att räkna ut millisekunderna mellan de två datumen.
 
 
 		if(isNaN(birthDate)){
-			throw new Error("Du måste skriva in ett datum i formatet: 'ÅÅÅÅ-MM-DD'");
+			throw new Error("Du måste skriva in ett datum i formatet: 'ÅÅÅÅ-MM-DD'"); //Om användaren inte matar in några siffor så visas ett felmeddelande.
 		}
 
+	
 
+
+		return daysUntilBirthday;
 
 
 
 		//Betrakta speciellt hur du ska hantera följande:
 		//Användaren kan redan ha fyllt år? Exempelvis i mars.
-		//Vad händer vid skottår?
+		//Vad händer vid skottår? (- get.Time tar hand om det?)
 		//Fundera kring om din kod uppför sig olika före eller efter klockan 12.00 på dagen.
 
 
 
-
-
-
-		// Skapa utifrån det inlästa datumet ett datumobjekt som representerar när användaren fyller år nästa gång.
 		// Utgå ifrån att användaren fyller år i år.
 		// Fundera på hur du kan få fram aktuellt år utan att skriva in det i klartext.
-		// Skapa sedan ytterligare ett datumobjekt med dagens datum.
+
 		// Genom att subtrahera antalet millisekunder till dags dato från antalet millisekunder
 		// då du fyller år får du skillnaden mellan datumen.
-		// Kan du via denna skillnad se om användaren fyllt år?
-		// Om så vad blir då nästa steg?
-		// När du fått detta att fungera kan du sedan omvandla antalet millisekunder
-		//till dagar och du är klar med uppgiften.
-
 		//För att ta reda på hur många millisekunder som förflutit
 		//sedan 1 januari, 1970 till ett visst datum
 		//går det bra att använda följande funktion på en Date-variabel: getTime()
+
+
+		// Kan du via denna skillnad se om användaren fyllt år?
+		// Om så vad blir då nästa steg?
+
+		// När du fått detta att fungera kan du sedan omvandla antalet millisekunder
+		//till dagar och du är klar med uppgiften.
+
+
 
 
 	};
