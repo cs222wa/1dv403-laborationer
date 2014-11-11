@@ -8,31 +8,33 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
 
+	//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
+	try{
+		if(str == [""]){
+			throw new FormatException();
+		}
+	}
+	catch (FormatException){
+		return ["Du måste skriva in ett ord/ en mening i text-fältet."];
+	}
 
-		var myStr = str.replace(/[Aa]/g, '#');  //ersätter alla "a" med en "#"
+	var myStr = str.replace(/[Aa]/g, '#');  //ersätter alla "a" med en "#"
 
 	 //loopar igenom strängen och skriver ut var bokstav för sig.
-		for (var i = 0, length = myStr.length; i < length; i++){
-			var stringChar = myStr[i];
-			var newString;
-			if (stringChar == stringChar.toUpperCase()){
-				stringChar = stringChar.toLowerCase();
-				newString += stringChar;
-			}
-			else if(stringChar == stringChar.toLowerCase()){
-				stringChar = stringChar.toUpperCase();
-				newString += stringChar;
-			}
+	for (var i = 0, length = myStr.length; i < length; i++){
+		var stringChar = myStr[i];
+		var newString;
+		if (stringChar == stringChar.toUpperCase()){
+			stringChar = stringChar.toLowerCase();
+			newString += stringChar;
 		}
+		else if(stringChar == stringChar.toLowerCase()){
+			stringChar = stringChar.toUpperCase();
+			newString += stringChar;
+		}
+	}
 
-	//Om användaren klickar på "omvandla" utan att ha skrivit in en text så ska din funktion kasta ett undantag med ett lämpligt felmeddelande.
-	// try{
-	// 	convertString == number;
-	// 	throw new FormatException();
-	// }
-	// catch (FormatException){
-	// 	return ["Du måste skriva in ett ord/ en mening i text-fältet."];
-	// }
+
 
 	return newString;
 
