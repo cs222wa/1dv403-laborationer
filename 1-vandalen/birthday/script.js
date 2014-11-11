@@ -16,6 +16,10 @@ window.onload = function(){
 		return ["Du måste skriva in ett datum i formatet: 'ÅÅÅÅ-MM-DD'"];
 	}
 
+	var birthDate = new Date(date); // Nytt date-objekt skapas som tar det inmatade datumet från användaren som argument.
+	var todaysDate = new Date(); //Nytt date-objekt skapas med dagens datum.
+
+
 		//Betrakta speciellt hur du ska hantera följande:
 		//Användaren kan redan ha fyllt år? Exempelvis i mars.
 		//Vad händer vid skottår?
@@ -36,6 +40,10 @@ window.onload = function(){
 		// Om så vad blir då nästa steg?
 		// När du fått detta att fungera kan du sedan omvandla antalet millisekunder
 		//till dagar och du är klar med uppgiften.
+
+		//För att ta reda på hur många millisekunder som förflutit
+		//sedan 1 januari, 1970 till ett visst datum
+		//går det bra att använda följande funktion på en Date-variabel: getTime()
 
 
 	};
