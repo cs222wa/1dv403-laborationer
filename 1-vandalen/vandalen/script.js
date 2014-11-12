@@ -12,15 +12,23 @@ var makePerson = function(persArr){			//Tar emot en array (data) som argument oc
 
 	var names = namesArr.sort();		//sortera den nya arrayen innehållande namn.
 
-	// var ages = persArr.map(function(ages){		//se ovan, men arrayen som skapas innehåller värdena för ages.
+	// var agesArr = persArr.map(function(age){		//se ovan, men arrayen som skapas innehåller värdena för ages.
 	// 	return age.ages;
+	// });
+
+	// var agesSorted = agesArr.sort(function(a, b){return a-b});		//sorterade åldrarna i stigande nummerordning
+
+	//
+	// var maxAge = agesSorted.max(function(agesSorted){					//Letade upp Maxvärdet i den sorterade Arrayen för åldrar.
+	//     return Math.max.apply(Math, agesSorted);
 	// });
 	//
 
+	// var minAge = agesSorted.min(function(agesSorted){			//Letade upp minimumvärdet i den sorterade Arrayen för åldrar.
+	// 	return Math.min.apply(Math, agesSorted);
+	// });
 
 
-var minAge;
-var maxAge;
 var averageAge;
 
 
@@ -35,22 +43,3 @@ return result;}
 // var result = makePerson(data);  //Arrayen som ska behandlas skickas till makePerson.
 //
 // console.log(result); //resultatet av makePerson skrivs ut.
-
-
-/*
-jag använde aldrig det som Johan skrev i labben.
-Ta bort det och kör en for loop med persArr.lenght.
-Plocka ut text persArr[i].name och spara dem i en ny array som du kan sortera i bokstavsordning.
-Logga ut det så kommer du börja förstå.
-Så var det för mig iallafall.
-
-Gjorde om min nya array till en sträng med alla namnen och
-satte det som result.names = strängen…
-Sist returnerar jag result.
-
-Du ska bara ha en return i koden (sist).
-Result är ett nytt objekt där du samlar alla dina nya egenskaper
-som textsträngen med alla namn eller när du räknat ut average.
-Du kan inte använda dig av Johans array rakt av utan måste
-bearbeta lite innan så det bli rätt
-*/
