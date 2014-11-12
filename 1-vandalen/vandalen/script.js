@@ -29,7 +29,9 @@ var makePerson = function(persArr){			//Tar emot en array (data) som argument oc
 	// });
 
 
-var averageAge;
+	// var averageAge = agesSorted.reduce(function(a,b){			//summerar alla värden i arrayen och delar dem på 2.
+	// 	return (a+b)/2;
+	// });
 
 
 
