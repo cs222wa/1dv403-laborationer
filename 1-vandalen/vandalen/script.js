@@ -6,32 +6,37 @@ namnen sorterade i bokstavsordning och separerade med ", " (komma och efterfölj
 
 var makePerson = function(persArr){			//Tar emot en array (data) som argument och gör om det till ett objekt (persArr).
 
-	// var names = persArr.map(function(name){  //.map hämtar ut värdet från varje person i arrayen och skapar en ny array (föreläsning 3)
-  //   return name.names;												//genom att skapa en funktion.
-	// });
-	//
-  // function names(persArr){						//en funktion som heter names.
-  //     return names.sort(function (a, b){			//sorterar namnen i bokstavsordning
-  //         return a.localeCompare(b);					//sorterar efter Å Ä och Ö.
-  //     }).join(", ");}													//skriver ihop alla namn till en och samma sträng.
+	var namesArr = [];
+	var agesArr = [];
+	
+	function getProperties(elem, index, arr){
+		namesArr[index] = elem.name;
+		agesArr[index] = elem.age;
+	}
+	
+	persArr.forEach(getProperties);
 
-var result = {};
-    var namesArray = [];
-    var agesArray = [];
+	namesArr.sort(function(a, b){
+		return a.localeCompare(b);
+	});
+	
+	var namesStr = namesArr.join(", ");
 
-function getArrayElements(elem, index, arr) {
-        namesArray[index] = elem.name;
-        agesArray[index] = elem.age;
-    }
-    persArr.forEach(getArrayElements);
 
-namesArray.sort(function(a, b) {
-        return a.localeCompare(b);
-    });
 
-    nameString= namesArray.join(", ");
 
-console.log(namesArray);
+
+
+
+
+	 // var names = persArr.map(function(name){  //.map hämtar ut värdet från varje person i arrayen och skapar en ny array (föreläsning 3)
+ 	 //    return name.names;												//genom att skapa en funktion.
+ 	 // });
+	
+	 //  function names(persArr){						//en funktion som heter names.
+	 //      return names.sort(function (a, b){			//sorterar namnen i bokstavsordning
+	 //          return a.localeCompare(b);					//sorterar efter Å Ä och Ö.
+	 //      }).join(", ");}													//skriver ihop alla namn till en och samma sträng.
 
 
 
@@ -57,7 +62,7 @@ console.log(namesArray);
 	//
 	//
 
-return {names: name};
+return {names: namesStr};
 
 };
 
