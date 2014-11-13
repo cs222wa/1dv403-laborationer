@@ -13,35 +13,33 @@ var makePerson = function(persArr){					//Tar emot en array (data) som argument 
 	var namesArr = [];
 	var agesArr = [];
 	
-	function getProperties(elem, index, arr){		//Letar upp indexvärdena för elementen ålder/namn en array och sparar dem till varsin ny array
+	function getProperties(elem, index, arr){						//Letar upp indexvärdena för elementen ålder/namn en array och sparar dem till varsin ny array
 		namesArr[index] = elem.name;
 		agesArr[index] = elem.age;
 	}
-	
-	persArr.forEach(getProperties);					//Skickar arrayen persArray till funktionen getProperties
-	
-	namesArr.sort(function(a, b){					//sorterar elementen i arrayen för namn (inklusive Å, Ä och Ö)
+	persArr.forEach(getProperties);									//Skickar arrayen persArray till funktionen getProperties
+	namesArr.sort(function(a, b){									//sorterar elementen i arrayen för namn (inklusive Å, Ä och Ö)
 		return a.localeCompare(b);		
 	});
-	
-	var namesStr = namesArr.join(", ");				//Sätter ihop alla elementen i arrayen för namn till en sträng, åtskildja av ett "," och ett mellanslag.
-	
-	
-	
-	
-	
-	//Nytt problem -  Åldrarna skrivs ut som undefined & siffror upprepade gånger. - Står fortfarande i en forloop??
+	var namesStr = namesArr.join(", ");								//Sätter ihop alla elementen i arrayen för namn till en sträng, åtskildja av ett "," och ett mellanslag.
 	
 	var agesSorted = agesArr.sort(function(a, b){return a-b});		//sorterade åldrarna i stigande nummerordning
-	
-	 
-	 var minAge = agesSorted[0];		//= ger rätt på test 1.3 - men returnerar hela arrayen.
-	 
+	var minAge = agesSorted[0];		
 	var maxAge = agesSorted[agesSorted.length - 1];
+	var averageAge = agesSorted.reduce(function(a,b){				//summerar alla värden i arrayen och delar dem på 2.
+		return (a+b)/3;
+	});
 	 
-	 
-	 
-	 
+
+
+
+
+
+
+
+
+
+
 	 
 	//VARFÖR FUNGERAR INTE DETTA?
 	 
@@ -89,7 +87,7 @@ var makePerson = function(persArr){					//Tar emot en array (data) som argument 
 	
 
 
-return {minAge: minAge, maxAge: maxAge, names: namesStr};
+return {minAge: minAge, maxAge: maxAge, averageAge: averageAge, names: namesStr};
 
 };
 /*maxAge: maxAge,*/ /*minAge: minAge,*/
