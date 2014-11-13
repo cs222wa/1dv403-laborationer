@@ -15,34 +15,17 @@ var makePerson = function(persArr){			//Tar emot en array (data) som argument oc
 	}
 	
 	persArr.forEach(getProperties);
-
+	
 	namesArr.sort(function(a, b){
 		return a.localeCompare(b);
 	});
 	
 	var namesStr = namesArr.join(", ");
 
-
-
-
-
-
-
-
-	 // var names = persArr.map(function(name){  //.map hämtar ut värdet från varje person i arrayen och skapar en ny array (föreläsning 3)
- 	 //    return name.names;												//genom att skapa en funktion.
- 	 // });
+	agesArr.sort()	
+		
+	var minAge = agesArr; 	
 	
-	 //  function names(persArr){						//en funktion som heter names.
-	 //      return names.sort(function (a, b){			//sorterar namnen i bokstavsordning
-	 //          return a.localeCompare(b);					//sorterar efter Å Ä och Ö.
-	 //      }).join(", ");}													//skriver ihop alla namn till en och samma sträng.
-
-
-
-	// var agesArr = persArr.map(function(age){		//se ovan, men arrayen som skapas innehåller värdena för ages.
-	// 	return age.ages;
-	// });
 	//
 	// var agesSorted = agesArr.sort(function(a, b){return a-b});		//sorterade åldrarna i stigande nummerordning
 	//
@@ -62,13 +45,26 @@ var makePerson = function(persArr){			//Tar emot en array (data) som argument oc
 	//
 	//
 
-return {names: namesStr};
+
+
+	 // var names = persArr.map(function(name){  //.map hämtar ut värdet från varje person i arrayen och skapar en ny array (föreläsning 3)
+ 	 //    return name.names;												//genom att skapa en funktion.
+ 	 // });
+	
+	 //  function names(persArr){						//en funktion som heter names.
+	 //      return names.sort(function (a, b){			//sorterar namnen i bokstavsordning
+	 //          return a.localeCompare(b);					//sorterar efter Å Ä och Ö.
+	 //      }).join(", ");}													//skriver ihop alla namn till en och samma sträng.
+
+
+
+return {minAge: minAge, names: namesStr};
 
 };
+/*maxAge: maxAge,*/ /*: minAge,*/
 
+// var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];  //Arrayen som innehåller informationen.
 
-var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];  //Arrayen som innehåller informationen.
+// var result = makePerson(data);  //Arrayen som ska behandlas skickas till makePerson.
 
-var result = makePerson(data);  //Arrayen som ska behandlas skickas till makePerson.
-
-console.log(result); //resultatet av makePerson skrivs ut.
+// console.log(result); //resultatet av makePerson skrivs ut.
