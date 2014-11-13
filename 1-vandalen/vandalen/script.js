@@ -13,6 +13,8 @@ var makePerson = function(persArr){					//Tar emot en array (data) som argument 
 	var namesArr = [];
 	var agesArr = [];
 	
+
+	
 	function getProperties(elem, index, arr){						//Letar upp indexvärdena för elementen ålder/namn en array och sparar dem till varsin ny array
 		namesArr[index] = elem.name;
 		agesArr[index] = elem.age;
@@ -26,9 +28,12 @@ var makePerson = function(persArr){					//Tar emot en array (data) som argument 
 	var agesSorted = agesArr.sort(function(a, b){return a-b});		//sorterade åldrarna i stigande nummerordning
 	var minAge = agesSorted[0];		
 	var maxAge = agesSorted[agesSorted.length - 1];
-	var averageAge = agesSorted.reduce(function(a,b){				//summerar alla värden i arrayen och delar dem på 2.
-		return (a+b)/3;
+	var agesTotal = agesSorted.reduce(function(a,b){				//summerar alla värden i arrayen.
+		return a+b 
 	});
+	var averageAge = Math.round(agesSorted.reduce(function(a,b){				//Rundar av och returnerar det totala värdet av arrayen delat med arrayens längd..
+		return (agesTotal)/agesSorted.length;
+	}));
 	 
 
 
