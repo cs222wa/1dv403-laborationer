@@ -1,7 +1,4 @@
 "use strict";
-
-
-
 var MessageBoard  = {
 
     messages: [],
@@ -21,24 +18,37 @@ var MessageBoard  = {
     },
 
     renderMessage: function(messageID) {
+
         var div = document.getElementById("display"); //select the div where you want your message displayed.
+        var msgDiv = document.createElement("div");
+        div.appendChild(msgDiv);
+
         var msgText = document.createElement("p"); //create a p-tag to write out message
         msgText.innerHTML = MessageBoard.messages[messageID].getHTMLText();   // get text from message
 
         var msgDate = document.createElement("p"); //create a p-tag to write out date
         msgDate.innerHTML = MessageBoard.messages[messageID].getDateText();  // get date for message
-        msgDate.className = "small";
+        msgDate.className = "smallright";
 
-        div.appendChild(msgText);     //add the text at the bottom of the selected div.
-        div.appendChild(msgDate);
-        console.log(msgText, msgDate);
+        msgDiv.appendChild(msgText);     //add the text at the bottom of the selected div.
+        msgDiv.appendChild(msgDate);       //add the date after the message
+
+
+        var sentdiv = document.getElementById("sentmessages"); //select the div where you want the number displayed
+        sentdiv.innerHTML  = "";
+        var sentMsg = document.createElement("p");
+        sentMsg.innerHTML = "Messages sent " + MessageBoard.messages.length;
+        sentdiv.appendChild(sentMsg);
     }
+
+
+
+
 };
 window.onload = MessageBoard.init; //Placed last in script, otherwise it will become undefined.
 
-
 /*
-To Do
-- Create counter to display on the page.
-        Append/replace to div "sentmessages".
+div where 1 message is displayed = msgDiv
+div where counter is displayed = sentDiv
+
 */
