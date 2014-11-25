@@ -1,0 +1,50 @@
+
+h1 {
+    visibility: hidden;
+}
+
+
+body {
+    margin: 0;
+    background-color: #e6ebe5;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#wrapper{
+    background-color: white;
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    clear: both;
+    width: 1200px;
+    overflow: hidden;
+    border-style: double;
+    border-color: black;
+    border-width: 2px;
+}
+
+#content {
+
+    margin-left: 20%;
+    margin-bottom: 10%;
+}
+
+#foot {
+    background-color: white;
+}
+
+
+p {
+    font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.small {
+    font-size: 10px;
+    font-style: italic;
+ }
