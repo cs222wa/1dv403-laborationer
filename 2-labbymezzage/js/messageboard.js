@@ -19,9 +19,9 @@ var MessageBoard  = {
 
     renderMessage: function(messageID) {
 
-        var div = document.getElementById("display"); //select the div where you want your message displayed.
-        var msgDiv = document.createElement("div");
-        div.appendChild(msgDiv);
+        var div = document.getElementById("display"); //select the div with id "display"
+        var msgDiv = document.createElement("div");  //create a new div to display messages.
+        div.appendChild(msgDiv);                    //add new div to page.
 
         var msgText = document.createElement("p"); //create a p-tag to write out message
         msgText.innerHTML = MessageBoard.messages[messageID].getHTMLText();   // get text from message
@@ -35,20 +35,64 @@ var MessageBoard  = {
 
 
         var sentdiv = document.getElementById("sentmessages"); //select the div where you want the number displayed
-        sentdiv.innerHTML  = "";
-        var sentMsg = document.createElement("p");
-        sentMsg.innerHTML = "Messages sent " + MessageBoard.messages.length;
-        sentdiv.appendChild(sentMsg);
-    }
+        sentdiv.innerHTML  = "";                                //clear the div
+        var sentMsg = document.createElement("p"); //create new text element
+        sentMsg.innerHTML = "Messages sent " + MessageBoard.messages.length; //add text to element
+        sentdiv.appendChild(sentMsg); // add text to page.
 
+        console.log(MessageBoard.messages);
 
+        var deleteMsg = document.createElement("img");
+        deleteMsg.setAttribute('src', 'css/pics/delete.png');
+        deleteMsg.setAttribute('alt', 'Delete message');
+        deleteMsg.style.width= '15px';
+        deleteMsg.style.height= '15px';
+        deleteMsg.style.float= 'right';
+        msgDiv.appendChild(deleteMsg);
+
+        deleteMsg.onclick = function(){
+            MessageBoard.removeMessage(messageID);
+            alert("Removing message from chat.");
+        }
+    },
+
+        removeMessage: function(messageID) {
+            MessageBoard.messages.splice(messageID, 1)
+            console.log(MessageBoard.messages);
+        }
 
 
 };
 window.onload = MessageBoard.init; //Placed last in script, otherwise it will become undefined.
 
+
+
+
+
+
+//.style.fontcolor("#9a1027");  --- red color
+
+
 /*
 div where 1 message is displayed = msgDiv
 div where counter is displayed = sentDiv
-
 */
+
+/*
+Questions - image links for delete & timestamp
+How does one place a link/image inside a div which hasn't been created yet?
+Answer
+var delete = document.createElement("img");
+var delete = document.createElement("a");
+delete.className = "deleteImg";
+delete.style.float = "right"; OR deleteImg.style.float = "right";
+
+ */
+
+/*
+If there's time
+Create overflow scroll effect on the div "display"
+Set clear / float settings on elements to keep the time from tabbing to the left with each post.
+Create better looking frames for content - one pannel from top to bottom of page.
+Make time display in red.
+ */
