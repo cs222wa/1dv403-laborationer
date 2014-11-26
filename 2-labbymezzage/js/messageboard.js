@@ -30,17 +30,10 @@ var MessageBoard  = {
         msgDate.innerHTML = MessageBoard.messages[messageID].getDateText();  // get date for message
         msgDate.className = "smallright";
 
-        msgDiv.appendChild(msgText);     //add the text at the bottom of the selected div.
-        msgDiv.appendChild(msgDate);       //add the date after the message
-
-
         var sentdiv = document.getElementById("sentmessages"); //select the div where you want the number displayed
         sentdiv.innerHTML  = "";                                //clear the div
         var sentMsg = document.createElement("p"); //create new text element
         sentMsg.innerHTML = "Messages sent " + MessageBoard.messages.length; //add text to element
-        sentdiv.appendChild(sentMsg); // add text to page.
-
-        console.log(MessageBoard.messages);
 
         var deleteMsg = document.createElement("img");
         deleteMsg.setAttribute('src', 'css/pics/delete.png');
@@ -48,30 +41,33 @@ var MessageBoard  = {
         deleteMsg.style.width= '15px';
         deleteMsg.style.height= '15px';
         deleteMsg.style.float= 'right';
+
+
         msgDiv.appendChild(deleteMsg);
+        msgDiv.appendChild(msgText);     //add the text at the bottom of the selected div.
+        msgDiv.appendChild(msgDate);       //add the date after the message
+        sentdiv.appendChild(sentMsg); // add number of sent messages to page.
 
         deleteMsg.onclick = function(){
             MessageBoard.removeMessage(messageID);
             alert("Removing message from chat.");
+
+            var clearDisplay = document.getElementById("display");
+                clearDisplay.innerHTML = "";
+                MessageBoard.renderMessages();
+        }
+
+    },
+    renderMessages: function() {
+        for (var i=0; i< MessageBoard.messages.length; ++i){
+            MessageBoard.renderMessage(i);
         }
     },
-
         removeMessage: function(messageID) {
-            MessageBoard.messages.splice(messageID, 1)
-            console.log(MessageBoard.messages);
+            MessageBoard.messages.splice(messageID, 1);
         }
-
-
 };
 window.onload = MessageBoard.init; //Placed last in script, otherwise it will become undefined.
-
-
-
-
-
-
-//.style.fontcolor("#9a1027");  --- red color
-
 
 /*
 div where 1 message is displayed = msgDiv
@@ -79,20 +75,10 @@ div where counter is displayed = sentDiv
 */
 
 /*
-Questions - image links for delete & timestamp
-How does one place a link/image inside a div which hasn't been created yet?
-Answer
-var delete = document.createElement("img");
-var delete = document.createElement("a");
-delete.className = "deleteImg";
-delete.style.float = "right"; OR deleteImg.style.float = "right";
-
- */
-
-/*
 If there's time
 Create overflow scroll effect on the div "display"
 Set clear / float settings on elements to keep the time from tabbing to the left with each post.
 Create better looking frames for content - one pannel from top to bottom of page.
 Make time display in red.
+ //.style.fontcolor("#9a1027");  --- red color
  */
