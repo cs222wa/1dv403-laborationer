@@ -30,6 +30,11 @@ body {
     margin-bottom: 10%;
 }
 
+#display {
+    width: 650px;
+}
+
+
 #foot {
     background-color: white;
 }
@@ -48,3 +53,9 @@ p {
     font-size: 10px;
     font-style: italic;
  }
+
+.smallright {
+    font-size: 10px;
+    font-style: italic;
+    float: right;
+}

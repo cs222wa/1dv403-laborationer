@@ -29,5 +29,5 @@ Message.prototype.getHTMLText = function(){
 Message.prototype.getDateText = function(){
  var currentDate = this.getDate();
 
- return currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds() + " " + currentDate.getDate() + "/" + currentDate.getMonth();
+ return currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
 };
