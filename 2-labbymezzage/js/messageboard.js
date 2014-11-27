@@ -17,7 +17,6 @@ var MessageBoard  = {
                 MessageBoard.newMsg();
             }
         };
-
     },
     newMsg: function() {
         var msgArea = document.getElementById("textarea"); //tells object where to collect the message text.
@@ -73,10 +72,20 @@ var MessageBoard  = {
 
         deleteMsg.onclick = function(){
             MessageBoard.removeMessage(messageID);
-            alert("Removing message from chat.");
-            var clearDisplay = document.getElementById("display");
+
+
+            var warningMsg;
+            var r = confirm("Do you really wish to remove selected message?");
+            if (r == true) {
+                warningMsg = "Message has been removed.";
+                alert(warningMsg);
+                var clearDisplay = document.getElementById("display");
                 clearDisplay.innerHTML = "";
                 MessageBoard.renderMessages();
+            } else {
+                warningMsg = "You pressed cancel. Your message has not been removed.";
+                alert(warningMsg);
+            }
         },
 
         timeStamp.onclick = function(){
