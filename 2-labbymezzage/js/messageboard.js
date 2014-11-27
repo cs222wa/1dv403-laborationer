@@ -4,21 +4,29 @@ var MessageBoard  = {
     messages: [],
 
     init: function() {
+
+
         var sent = document.getElementById("button");   //when user presses "send" button
-        sent.onclick = MessageBoard.sentMsg;            //the function sentMsg is called.
+        sent.onclick = MessageBoard.newMsg;            //the function sentMsg is called.
+        var listenArea = document.getElementById("textarea");
+        listenArea.onkeydown = function(e) {
+            if (!e) {
+                e = window.event;
+            } // senses if enter-key is pushed down.
+            if (e.keyCode === 13){
+                MessageBoard.newMsg();
+            }
+        };
+
     },
-
-    sentMsg: function() {
-
+    newMsg: function() {
         var msgArea = document.getElementById("textarea"); //tells object where to collect the message text.
-       // console.log(msgArea.value);
         MessageBoard.messages.push(new Message(msgArea.value, new Date())); //adds new object to array
         var lastMsg = MessageBoard.messages.length -1; //select last message in the array,
         MessageBoard.renderMessage(lastMsg); //sends selected message to be created on site
     },
 
     renderMessage: function(messageID) {
-
         var div = document.getElementById("display"); //select the div with id "display"
         var msgDiv = document.createElement("div");  //create a new div to display messages.
         div.appendChild(msgDiv);                    //add new div to page.
@@ -66,7 +74,6 @@ var MessageBoard  = {
         deleteMsg.onclick = function(){
             MessageBoard.removeMessage(messageID);
             alert("Removing message from chat.");
-
             var clearDisplay = document.getElementById("display");
                 clearDisplay.innerHTML = "";
                 MessageBoard.renderMessages();
@@ -77,23 +84,17 @@ var MessageBoard  = {
             return false;
         };
     },
-
-
-
     dateAlert: function(messageID) {
         alert(MessageBoard.messages[messageID].getDateText(true));
     },
-
-
-
     renderMessages: function() {
         for (var i=0; i< MessageBoard.messages.length; ++i){
             MessageBoard.renderMessage(i);
         }
     },
-        removeMessage: function(messageID) {
-            MessageBoard.messages.splice(messageID, 1);
-        }
+    removeMessage: function(messageID) {
+        MessageBoard.messages.splice(messageID, 1);
+    }
 };
 window.onload = MessageBoard.init; //Placed last in script, otherwise it will become undefined.
 
