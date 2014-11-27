@@ -36,33 +36,25 @@ var MessageBoard  = {
         var msgDate = document.createElement("p"); //create a p-tag to write out date
         msgDate.innerHTML = MessageBoard.messages[messageID].getDateText();  // get date for message
         msgDate.className = "smallright";
-        msgDate.style.clear= 'both';
-        msgDate.style.color= '#9a1027';
+
 
         var sentdiv = document.getElementById("sentmessages"); //select the div where you want the number displayed
         sentdiv.innerHTML  = "";                                //clear the div
         var sentMsg = document.createElement("p"); //create new text element
         sentMsg.innerHTML = "Messages sent " + MessageBoard.messages.length; //add text to element
-        sentMsg.style.clear= 'both';
         sentMsg.className = 'small';
+
+
 
         var deleteMsg = document.createElement("img");
         deleteMsg.setAttribute('src', 'css/pics/delete.png');
         deleteMsg.setAttribute('alt', 'Delete message icon shaped like a red X.');
-        deleteMsg.style.width= '15px';
-        deleteMsg.style.height= '15px';
-        deleteMsg.style.float= 'right';
-        deleteMsg.style.clear= 'both';
-        deleteMsg.style.margin= '5px';
+        deleteMsg.className = 'deleteicon';
 
         var timeStamp = document.createElement("img");
         timeStamp.setAttribute('src', 'css/pics/clock.png');
         timeStamp.setAttribute('alt', 'Time stamp icon shaped like a small clock.');
-        timeStamp.style.width= '15px';
-        timeStamp.style.height= '15px';
-        timeStamp.style.float= 'right';
-        timeStamp.style.clear= 'left';
-        timeStamp.style.margin= '5px';
+        timeStamp.className = 'timeicon';
 
         msgDiv.appendChild(deleteMsg);
         msgDiv.appendChild(timeStamp);
@@ -111,11 +103,18 @@ div where counter is displayed = sentDiv
 
 /*
 If there's time
-set all genereated styles to css class.
 Place links around delete and timestamp img.
+var link = create element a
+//set preferences for link?
+var img = create element img
+set preferenses for img (classname etc)
+a.innerhtml= img;
+append child
+
 Create overflow scroll effect on the div "display"
 Set elements in msgDiv to be horizontally aligned with each other. Margin on text?
-Create better looking frames for content - one panel from top to bottom of page & frame around each message-div.
+Create better looking frames for content -
+one panel from top to bottom of page & frame around each message-div.
  */
 
 

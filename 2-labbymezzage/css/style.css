@@ -52,10 +52,29 @@ p {
 .small {
     font-size: 10px;
     font-style: italic;
+    clear: both;
  }
 
 .smallright {
     font-size: 10px;
     font-style: italic;
     float: right;
+    clear: both;
+    color: #9a1027;
+}
+
+.deleteicon {
+    width: 15px;
+    height: 15px;
+    float: right;
+    clear: both;
+    margin: 5px
+}
+
+.timeicon {
+    width: 15px;
+    height: 15px;
+    float: right;
+    clear: left;
+    margin: 5px
 }
