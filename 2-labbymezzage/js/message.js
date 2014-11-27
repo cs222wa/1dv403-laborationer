@@ -26,8 +26,26 @@ Message.prototype.getHTMLText = function(){
  return this.getText().replace(/ \n /g, "<br/>");
 };
 
-Message.prototype.getDateText = function(){
+Message.prototype.getDateText = function(dateAlert){
  var currentDate = this.getDate();
 
+if(dateAlert === true){
+ var returnText = "This message was created: ";
+
+ return returnText + currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds() + " " + currentDate.getDate() + "/" + (currentDate.getMonth()+1) + "/" + currentDate.getFullYear();
+
+}
+ else {
  return currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+}
+
 };
+
+
+
+//if (hour < 10) {
+//hour = "0" + hour;
+//}
+
+//jag kör med getDate().toLocaleTimeString();
+//[00:26:58] doxbox: då blir det samma som inställningarna på datorn

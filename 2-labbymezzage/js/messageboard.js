@@ -70,8 +70,22 @@ var MessageBoard  = {
             var clearDisplay = document.getElementById("display");
                 clearDisplay.innerHTML = "";
                 MessageBoard.renderMessages();
-        }
+        },
+
+        timeStamp.onclick = function(){
+           MessageBoard.dateAlert(messageID);
+            return false;
+        };
     },
+
+
+
+    dateAlert: function(messageID) {
+        alert(MessageBoard.messages[messageID].getDateText(true));
+    },
+
+
+
     renderMessages: function() {
         for (var i=0; i< MessageBoard.messages.length; ++i){
             MessageBoard.renderMessage(i);
@@ -94,3 +108,8 @@ Create overflow scroll effect on the div "display"
 Set elements in msgDiv to be horizontally aligned with each other. Margin on text?
 Create better looking frames for content - one pannel from top to bottom of page & frame around each message-div.
  */
+
+
+
+
+
