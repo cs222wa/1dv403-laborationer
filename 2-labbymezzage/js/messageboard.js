@@ -12,8 +12,8 @@ var MessageBoard  = {
         listenArea.onkeydown = function(e) {
             if (!e) {
                 e = window.event;
-            } // senses if enter-key is pushed down.
-            if (e.keyCode === 13){
+            }
+            if(e.keyCode === 13 && !e.shiftKey){
                 MessageBoard.newMsg();
             }
         };
