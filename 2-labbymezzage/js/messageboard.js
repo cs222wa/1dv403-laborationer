@@ -72,8 +72,6 @@ var MessageBoard  = {
 
         deleteMsg.onclick = function(){
             MessageBoard.removeMessage(messageID);
-
-
             var warningMsg;
             var r = confirm("Do you really wish to remove selected message?");
             if (r == true) {
@@ -87,7 +85,6 @@ var MessageBoard  = {
                 alert(warningMsg);
             }
         },
-
         timeStamp.onclick = function(){
            MessageBoard.dateAlert(messageID);
             return false;
@@ -114,9 +111,11 @@ div where counter is displayed = sentDiv
 
 /*
 If there's time
+set all genereated styles to css class.
+Place links around delete and timestamp img.
 Create overflow scroll effect on the div "display"
 Set elements in msgDiv to be horizontally aligned with each other. Margin on text?
-Create better looking frames for content - one pannel from top to bottom of page & frame around each message-div.
+Create better looking frames for content - one panel from top to bottom of page & frame around each message-div.
  */
 
 
