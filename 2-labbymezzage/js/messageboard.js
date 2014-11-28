@@ -5,12 +5,6 @@ var MessageBoard  = {
 
     init: function() {
 
-        window.setInterval(function() {
-            var displayScroll = document.getElementById("display");
-            displayScroll.scrollTop = displayScroll.scrollHeight;
-        }, 100);
-
-
         var sent = document.getElementById("button");   //when user presses "send" button
         sent.onclick = MessageBoard.newMsg;            //the function sentMsg is called.
         var listenArea = document.getElementById("textarea");
@@ -18,9 +12,9 @@ var MessageBoard  = {
             if (!e) {
                 e = window.event;
             }
-            if(e.keyCode === 13 && !e.shiftKey){
-                MessageBoard.newMsg();
-                listenArea.value = "";
+            if(e.keyCode === 13 && !e.shiftKey){     //if enter is pressed without shift key
+                MessageBoard.newMsg();              //create new message
+                listenArea.value = "";              //clear textarea.
             }
         };
     },
@@ -29,8 +23,9 @@ var MessageBoard  = {
         MessageBoard.messages.push(new Message(msgArea.value, new Date())); //adds new object to array
         var lastMsg = MessageBoard.messages.length -1; //select last message in the array,
         MessageBoard.renderMessage(lastMsg); //sends selected message to be created on site
+        var displayScroll = document.getElementById("display");
+        displayScroll.scrollTop = displayScroll.scrollHeight;
     },
-
     renderMessage: function(messageID) {
         var displayDiv = document.getElementById("display"); //select the div with id "display"
         var msgDiv = document.createElement("div");  //create a new div to display messages.
@@ -50,80 +45,63 @@ var MessageBoard  = {
         sentMsg.innerHTML = "Messages sent " + MessageBoard.messages.length; //add text to element
         sentMsg.className = 'small';
 
-        var deleteMsg = document.createElement("img");
+        var deleteMsg = document.createElement("img");  //create img-object
         deleteMsg.setAttribute('src', 'css/pics/delete.png');
         deleteMsg.setAttribute('alt', 'Delete message icon shaped like a red X.');
         deleteMsg.className = 'deleteicon';
 
-        var timeStamp = document.createElement("img");
+        var timeStamp = document.createElement("img"); //create img-object
         timeStamp.setAttribute('src', 'css/pics/clock.png');
         timeStamp.setAttribute('alt', 'Time stamp icon shaped like a small clock.');
         timeStamp.className = 'timeicon';
 
         var deleteLink = document.createElement("a");
-        deleteLink.setAttribute('href', 'javascript:deleteLink.onclick()');
+        deleteLink.setAttribute('href', 'javascript:deleteLink.onclick()'); //set onclick event to link
         var timeLink = document.createElement("a");
-        timeLink.setAttribute('href', 'timeLink.onclick()');
+        timeLink.setAttribute('href', 'javascript:timeLink.onclick()');  //set onclick event to link
 
-        deleteLink.appendChild(deleteMsg);
+        deleteLink.appendChild(deleteMsg); //append img objects to link objects
         timeLink.appendChild(timeStamp);
 
-        msgDiv.appendChild(deleteLink);
+        msgDiv.appendChild(deleteLink);     //add links to page.
         msgDiv.appendChild(timeLink);
         msgDiv.appendChild(msgText);     //add the text at the bottom of the selected div.
         msgDiv.appendChild(msgDate);       //add the date after the message
         sentdiv.appendChild(sentMsg); // add number of sent messages to page.
 
         deleteLink.onclick = function(){
-            MessageBoard.removeMessage(messageID);
+            MessageBoard.removeMessage(messageID);     //display a choice for deleting of message
             var warningMsg;
             var r = confirm("Do you really wish to remove selected message?");
             if (r == true) {
                 warningMsg = "Message has been removed.";
-                alert(warningMsg);
                 var clearDisplay = document.getElementById("display");
                 clearDisplay.innerHTML = "";
                 MessageBoard.renderMessages();
+                alert(warningMsg);
             } else {
                 warningMsg = "You pressed cancel. Your message has not been removed.";
                 alert(warningMsg);
             }
         };
-        timeLink.onclick = function(){
+        timeLink.onclick = function(){      //function to display message info.
            MessageBoard.dateAlert(messageID);
             return false;
         };
     },
-    dateAlert: function(messageID) {
+    dateAlert: function(messageID) {    //display time and date message was created
         alert(MessageBoard.messages[messageID].getDateText(true));
     },
-    renderMessages: function() {
+    renderMessages: function() { //prints all messages in array
         for (var i=0; i< MessageBoard.messages.length; ++i){
             MessageBoard.renderMessage(i);
         }
     },
-    removeMessage: function(messageID) {
+    removeMessage: function(messageID) {    //removes selected message from array
         MessageBoard.messages.splice(messageID, 1);
     }
 };
 window.onload = MessageBoard.init; //Placed last in script, otherwise it will become undefined.
-
-/*
-div where 1 message is displayed = msgDiv
-div where counter is displayed = sentDiv
-*/
-
-/*
-If there's time
-
- Create better looking frames for message-div - neccesary?
-
- Clear textarea after send - still has a /n after clear, why?
-
-Add comments in code!
- */
-
-
 
 
 

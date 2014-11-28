@@ -34,7 +34,6 @@ Message.prototype.getDateText = function(dateAlert){
  }
  else {
   return currentDate.toLocaleTimeString();
-  //return currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
  }
 };
 

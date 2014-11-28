@@ -62,13 +62,13 @@ p {
 }
 
 .small {
-    font-size: 10px;
+    font-size: 12px;
     font-style: italic;
     clear: both;
  }
 
 .smallright {
-    font-size: 10px;
+    font-size: 12px;
     font-style: italic;
     float: right;
     clear: both;
