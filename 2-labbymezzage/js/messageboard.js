@@ -5,6 +5,11 @@ var MessageBoard  = {
 
     init: function() {
 
+        window.setInterval(function() {
+            var displayScroll = document.getElementById("display");
+            displayScroll.scrollTop = displayScroll.scrollHeight;
+        }, 100);
+
 
         var sent = document.getElementById("button");   //when user presses "send" button
         sent.onclick = MessageBoard.newMsg;            //the function sentMsg is called.
@@ -111,9 +116,7 @@ div where counter is displayed = sentDiv
 /*
 If there's time
 
-Display time in 00 format.
-
- Create better looking frames for message-div
+ Create better looking frames for message-div - neccesary?
 
  Clear textarea after send - still has a /n after clear, why?
 
