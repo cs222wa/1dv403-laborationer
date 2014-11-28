@@ -15,6 +15,7 @@ var MessageBoard  = {
             }
             if(e.keyCode === 13 && !e.shiftKey){
                 MessageBoard.newMsg();
+                listenArea.value = "";
             }
         };
     },
@@ -26,9 +27,10 @@ var MessageBoard  = {
     },
 
     renderMessage: function(messageID) {
-        var div = document.getElementById("display"); //select the div with id "display"
+        var displayDiv = document.getElementById("display"); //select the div with id "display"
         var msgDiv = document.createElement("div");  //create a new div to display messages.
-        div.appendChild(msgDiv);                    //add new div to page.
+        msgDiv.className = "messagediv";
+        displayDiv.appendChild(msgDiv);                    //add new div to page.
 
         var msgText = document.createElement("p"); //create a p-tag to write out message
         msgText.innerHTML = MessageBoard.messages[messageID].getHTMLText();   // get text from message
@@ -53,7 +55,6 @@ var MessageBoard  = {
         timeStamp.setAttribute('alt', 'Time stamp icon shaped like a small clock.');
         timeStamp.className = 'timeicon';
 
-
         var deleteLink = document.createElement("a");
         deleteLink.setAttribute('href', 'javascript:deleteLink.onclick()');
         var timeLink = document.createElement("a");
@@ -61,8 +62,6 @@ var MessageBoard  = {
 
         deleteLink.appendChild(deleteMsg);
         timeLink.appendChild(timeStamp);
-
-
 
         msgDiv.appendChild(deleteLink);
         msgDiv.appendChild(timeLink);
@@ -112,27 +111,13 @@ div where counter is displayed = sentDiv
 /*
 If there's time
 
-Place links around delete and timestamp img.
-var link = create element a
-//set preferences for link?
-var img = create element img
-set preferenses for img (classname etc)
-a.innerhtml= img;
-append child
+Display time in 00 format.
 
+ Create better looking frames for message-div
 
- Set elements in msgDiv to be horizontally aligned with each other. Margin on text?
+ Clear textarea after send - still has a /n after clear, why?
 
- clear textarea after send.
- listenArea.innerhtml="";
-
-Create overflow scroll effect on the div "display"
-
-Create better looking frames for message-div
-
-make wrapper reach to bottom of page - adaptable!
-
-add comments!
+Add comments in code!
  */
 
 
