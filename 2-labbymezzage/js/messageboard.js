@@ -37,14 +37,11 @@ var MessageBoard  = {
         msgDate.innerHTML = MessageBoard.messages[messageID].getDateText();  // get date for message
         msgDate.className = "smallright";
 
-
         var sentdiv = document.getElementById("sentmessages"); //select the div where you want the number displayed
         sentdiv.innerHTML  = "";                                //clear the div
         var sentMsg = document.createElement("p"); //create new text element
         sentMsg.innerHTML = "Messages sent " + MessageBoard.messages.length; //add text to element
         sentMsg.className = 'small';
-
-
 
         var deleteMsg = document.createElement("img");
         deleteMsg.setAttribute('src', 'css/pics/delete.png');
@@ -56,13 +53,24 @@ var MessageBoard  = {
         timeStamp.setAttribute('alt', 'Time stamp icon shaped like a small clock.');
         timeStamp.className = 'timeicon';
 
-        msgDiv.appendChild(deleteMsg);
-        msgDiv.appendChild(timeStamp);
+
+        var deleteLink = document.createElement("a");
+        deleteLink.setAttribute('href', 'javascript:deleteLink.onclick()');
+        var timeLink = document.createElement("a");
+        timeLink.setAttribute('href', 'timeLink.onclick()');
+
+        deleteLink.appendChild(deleteMsg);
+        timeLink.appendChild(timeStamp);
+
+
+
+        msgDiv.appendChild(deleteLink);
+        msgDiv.appendChild(timeLink);
         msgDiv.appendChild(msgText);     //add the text at the bottom of the selected div.
         msgDiv.appendChild(msgDate);       //add the date after the message
         sentdiv.appendChild(sentMsg); // add number of sent messages to page.
 
-        deleteMsg.onclick = function(){
+        deleteLink.onclick = function(){
             MessageBoard.removeMessage(messageID);
             var warningMsg;
             var r = confirm("Do you really wish to remove selected message?");
@@ -76,8 +84,8 @@ var MessageBoard  = {
                 warningMsg = "You pressed cancel. Your message has not been removed.";
                 alert(warningMsg);
             }
-        },
-        timeStamp.onclick = function(){
+        };
+        timeLink.onclick = function(){
            MessageBoard.dateAlert(messageID);
             return false;
         };
@@ -103,6 +111,7 @@ div where counter is displayed = sentDiv
 
 /*
 If there's time
+
 Place links around delete and timestamp img.
 var link = create element a
 //set preferences for link?
@@ -111,10 +120,19 @@ set preferenses for img (classname etc)
 a.innerhtml= img;
 append child
 
+
+ Set elements in msgDiv to be horizontally aligned with each other. Margin on text?
+
+ clear textarea after send.
+ listenArea.innerhtml="";
+
 Create overflow scroll effect on the div "display"
-Set elements in msgDiv to be horizontally aligned with each other. Margin on text?
-Create better looking frames for content -
-one panel from top to bottom of page & frame around each message-div.
+
+Create better looking frames for message-div
+
+make wrapper reach to bottom of page - adaptable!
+
+add comments!
  */
 
 
