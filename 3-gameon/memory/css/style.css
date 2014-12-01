@@ -1,0 +1,32 @@
+
+body {
+    margin: 0;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#wrapper {
+    background-color: darkslateblue;
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    clear: both;
+    width: 1200px;
+    height:100vh;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    display: block;
+}
+
+.tiles {
+    width: 200px;
+    height: auto;
+    margin: 5px;
+}
