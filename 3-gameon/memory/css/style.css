@@ -25,8 +25,22 @@ a {
     display: block;
 }
 
-.tiles {
+/*.tiles {
     width: 200px;
     height: auto;
     margin: 5px;
+}
+*/
+div#memory_board > div{
+   /* background: url(tile_bg.jpg) no-repeat; */
+    background-color: white;
+    border:#000 1px solid;
+    width:71px;
+    height:71px;
+    float:left;
+    margin:10px;
+    padding:20px;
+    font-size:64px;
+    cursor:pointer;
+    text-align:center;
 }
