@@ -21,19 +21,43 @@ var Memory = {
 
    gameBoard: function(tilesArray){
        console.log(tilesArray);
-
+       var board = document.getElementById("gameboard");
        this.tiles_flipped = 0;
        var output = "";
-       for (var i =0; i < tilesArray.lenght; i++) {
-           output += 'div id="tile_' +i+'" onclick="memoryFlipTile(this,\''+tilesArray[i]+'\')"></div>';
+       for (var i =0; i < tilesArray.length; i++) {
+
+           var tile = document.createElement("div");
+           tile.setAttribute('id', 'tile'+i);
+           tile.className= "tile";
+
+           var bg = document.createElement("img");
+           bg.setAttribute('src', 'pics/0.jpg');
+           bg.className= "bgimg";
+           tile.appendChild(bg);
+
+
+           var clickable = document.createElement("a");
+           clickable.setAttribute('href', 'javascript:gameBoard.onclick()');
+
+           clickable.appendChild(tile);
+           board.appendChild(clickable);
+
+
+           //output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+tilesArray[i]+'\')"></div>';
+
+          /* var tile = document.createElement("img");
+           tile.setAttribute('src', 'pics/0.jpg');
+           tile.setAttribute('alt', 'Image of a random Transformer.');
+           tile.className = 'tiles';
+           board.appendChild(tile);*/
        }
-       var board = document.getElementById("gameboard").innerHTML = output;
+
    }
+
 };
 
 
 window.onload = Memory.init;
-
 
 
 
