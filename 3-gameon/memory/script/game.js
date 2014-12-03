@@ -19,32 +19,41 @@ var Memory = {
 
         gameArr.forEach(function(tile, index){
 
-            var container = document.createElement("div");
+         /*   var container = document.createElement("div");
             container.setAttribute('id', 'tile'+index);
             container.className= "tile";
-
+           */
             var picture = document.createElement("img");
             picture.setAttribute('src', 'pics/img0.jpg');
             picture.setAttribute('alt', 'Image of the Transformers logo.');
-            picture.className= "bgimg";
-            container.appendChild(picture);
+            picture.classList.add("bgimg");
+
 
             var link = document.createElement("a");
+            link.className= "tile";
             link.setAttribute('href', '#');
+            if(index % 4 == 0){
+                link.classList.add("clear");
+            }
+
 
             link.onclick = function(e){
-
-                if (tries < 2){
+                e.preventDefault();
+                var selectedImg = this.childNodes[0];
+                console.log(selectedImg);
+                if (tries < 2 && !selectedImg.classList.contains("faceUp")){
                     tries++;
-                    e.target.src ="pics/img" + tile + ".jpg";
-                    e.target.alt = "Picture of random Transformer.";
+                    selectedImg.src ="pics/img" + tile + ".jpg";
+                    selectedImg.alt = "Picture of random Transformer.";
 
                     if(tries == 1){
-                        guess1 = e.target;
+                        guess1 = selectedImg;
+                        guess1.classList.add("faceUp");
                         console.log("first try");
                     }
                     else {
-                        guess2 = e.target;
+                        guess2 = selectedImg;
+                        guess2.classList.add("faceUp");
                         console.log("second try");
 
                         if(guess1.src == guess2.src){  //if the source image for both guesses are the same it logs as a match.
@@ -56,9 +65,8 @@ var Memory = {
                         else{
                             totalTries++;
                             setTimeout(function(){
-                                console.log(guess1);
-                                console.log(guess2);
-
+                                guess1.classList.remove("faceUp");
+                                guess2.classList.remove("faceUp");
                                 guess2.src ="pics/img0.jpg";
                                 guess1.src ="pics/img0.jpg";
                                // e.target.alt = "Image of the Transformers logo.";
@@ -68,10 +76,9 @@ var Memory = {
                                 console.log("flipping tiles");
 
                             }, 1000);
-
                         }
                     }
-                    if(finds == 8){
+                    if(finds >= gameArr.length/2){
                         alert("Congratulations, you solved the game in " + totalTries + " tries!");
                         setTimeout(function(){      //clears console log after 1 seconds.
                             console.clear();
@@ -81,7 +88,8 @@ var Memory = {
                     }
             };
 
-            link.appendChild(container);
+            //link.appendChild(container);
+            link.appendChild(picture);
             board.appendChild(link);
 
         });
