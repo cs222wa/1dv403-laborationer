@@ -28,17 +28,66 @@ var Memory = {
             var link = document.createElement("a");
             link.setAttribute('href', '#');
             link.onclick = function(e){
-                e.target.src ="pics/img" + tile + ".jpg";
 
-            }
+                var guess1 ="";
+                var guess2 ="";
+                var totalTries = 0;
+                var tries = 0; //variable for number of attempts made
+                var finds = 0; //variable for amount of corrent answers
+
+                if (tries < 2){
+                    tries++;
+                    e.target.src ="pics/img" + tile + ".jpg";
+                    e.target.alt = "Picture of random Transformer.";
+
+                    if(tries == 1){
+                        guess1 = e.target.src;
+                        console.log("first try");
+                    }
+                    else {
+                        guess2 = e.target.src;
+                        console.log("second try");
+
+                        if(guess1 == guess2){  //if the source image for both guesses are the same it logs as a match.
+
+                            finds++;
+                            totalTries++;
+                            console.log(finds);
+                            tries = 0; //resets number of tries.
+                        }
+                        else{
+                            totalTries++;
+                            setTimeout(function(){      //flips tiles after 1 second.
+                                console.log("flipping tiles");
+                            }, 1000);
+                            setTimeout(function(){      //clears console log after 6 secons.
+                                console.clear();
+                            }, 60000);
+                        }
+
+                    }
+                    if(finds == 8){
+                        alert("Congratulations, you solved the game in" + tries + "tries!");
+                        console.log(tries);
+                    }
+
+                    }
+
+            };
 
             link.appendChild(container);
             board.appendChild(link);
 
-
-           // console.log(tile);  //bild som ska visas
-           // console.log(index); //ordningen i arrayen
         });
+
+    }
+};
+window.onload = Memory.init;
+
+
+
+
+
 
 
 /*
@@ -71,6 +120,4 @@ var Memory = {
         link.appendChild(tile);
         board.appendChild(link);
     }*/
-}
-};
-window.onload = Memory.init;
+
