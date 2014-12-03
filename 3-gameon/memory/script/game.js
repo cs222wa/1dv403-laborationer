@@ -32,7 +32,6 @@ var Memory = {
             var link = document.createElement("a");
             link.setAttribute('href', '#');
 
-
             link.onclick = function(e){
 
                 if (tries < 2){
@@ -41,14 +40,14 @@ var Memory = {
                     e.target.alt = "Picture of random Transformer.";
 
                     if(tries == 1){
-                        guess1 = e.target.src;
+                        guess1 = e.target;
                         console.log("first try");
                     }
                     else {
-                        guess2 = e.target.src;
+                        guess2 = e.target;
                         console.log("second try");
 
-                        if(guess1 == guess2){  //if the source image for both guesses are the same it logs as a match.
+                        if(guess1.src == guess2.src){  //if the source image for both guesses are the same it logs as a match.
                             finds++;
                             totalTries++;
                             console.log(finds);
@@ -57,25 +56,29 @@ var Memory = {
                         else{
                             totalTries++;
                             setTimeout(function(){
-                                e.target.src ="pics/img0.jpg";
-                                e.target.alt = "Image of the Transformers logo.";
+                                console.log(guess1);
+                                console.log(guess2);
+
+                                guess2.src ="pics/img0.jpg";
+                                guess1.src ="pics/img0.jpg";
+                               // e.target.alt = "Image of the Transformers logo.";
                                 tries = 0; //resets number of tries.
                                   //flips tiles after 1 second.
+
                                 console.log("flipping tiles");
+
                             }, 1000);
 
                         }
                     }
                     if(finds == 8){
                         alert("Congratulations, you solved the game in " + totalTries + " tries!");
-                        console.log(tries);
-                        setTimeout(function(){      //clears console log after 1 secons.
+                        setTimeout(function(){      //clears console log after 1 seconds.
                             console.clear();
                         }, 10000);
                     }
 
                     }
-
             };
 
             link.appendChild(container);
@@ -91,36 +94,8 @@ window.onload = Memory.init;
 
 
 
-
-
 /*
-    for (var i =0; i < gameArr.length; i++) {
+Things to fix
+An already upturned tile should not be clickable, same if a match has been made.
 
-
-        var tile = document.createElement("div");
-        tile.setAttribute('id', 'tile'+i);
-        tile.className= "tile";
-
-        var picture = document.createElement("img");
-        picture.setAttribute('src', 'pics/img0.jpg');
-        picture.setAttribute('alt', 'Image of the Transformers logo.');
-        picture.className= "bgimg";
-        tile.appendChild(picture);
-
-        var flipTile = function(self,index){
-            self.querySelector("img").src = "pics/" + gameArr[index]+".jpg";
-            console.log(this.querySelector("img"));
-            console.log(gameArr);
-            console.log(gameArr[index]);
-            console.log(index);
-        };
-
-        var link = document.createElement("a");
-        link.setAttribute('href', '#');
-        link.onclick = function(){
-            flipTile(this,i);
-        }
-        link.appendChild(tile);
-        board.appendChild(link);
-    }*/
-
+ */
