@@ -90,3 +90,14 @@ body{
     float:left;
     margin: 2px;
 }
+
+.faceUp {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    transition: 0.7s;
+    transform-style: preserve-3d;
+
+
+}
