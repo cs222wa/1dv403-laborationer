@@ -32,7 +32,7 @@ a {
     margin: 5px;
 }
 */
-div#gameboard{
+/*div#gameboard{
     background:#CCC;
     border:#999 1px solid;
     width:1200px;
@@ -40,19 +40,53 @@ div#gameboard{
     padding:24px;
     margin:50px auto;
 }
-
-.bgimg {
-    width: 190px;
-    height: 190px;
+*/
+body{
+    background-image: url("transformers3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: black;
 }
-.clear {
+
+.MemoryGameBoard{
+    width:850px;
+    height:850px;
+    padding:24px;
+    margin-top: 87px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    //margin: 35px auto;
+}
+
+.MemoryGameBoard:before{
+    content: "";
+    background:#CCC;
+    width:823px;
+    height:823px;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+    border:#999 1px solid;
+    position: absolute;
+    z-index: -1;
+
+}
+
+.MemoryGameBoard .bgimg {
+    width: 200px;
+    height: 200px;
+}
+.MemoryGameBoard .clear {
     clear: both;
 }
 
-.tile{
+.MemoryGameBoard .tile{
     border:#000 1px solid;
-    width: 190px;
-    height: 190px;
+    width: 200px;
+    height: 200px;
     float:left;
-    margin:10px;
+    margin: 2px;
 }
