@@ -3,10 +3,7 @@ var Memory = {
     init: function() {
         //Inital function receives information on number of rows and columns
         //Then sends this information to a new function, which creates the array.
-        this.memory_values = [];
-        this.memory_tile_ids = [];
-        this.tiles_flipped = 0;
-
+        this.flipped =0;
         this.rows = 4;
         this.columns = 4;
         Memory.gameArray(this.rows, this.columns);
@@ -14,16 +11,14 @@ var Memory = {
 
     gameArray: function(rows, columns){
         //retrieve a new array based on the amount of rows and columns given.
-        var gameArr = RandomGenerator.getPictureArray(rows, columns);
+        this.gameArr = RandomGenerator.getPictureArray(rows, columns);
 
-        Memory.gameBoard(gameArr);
+        Memory.gameBoard(this.gameArr);
     },
 
    gameBoard: function(tilesArray){
        console.log(tilesArray);
        var board = document.getElementById("gameboard");
-       this.tiles_flipped = 0;
-       var output = "";
        for (var i =0; i < tilesArray.length; i++) {
 
            var tile = document.createElement("div");
@@ -31,25 +26,15 @@ var Memory = {
            tile.className= "tile";
 
            var bg = document.createElement("img");
-           bg.setAttribute('src', 'pics/0.jpg');
+           bg.setAttribute('src', 'pics/img0.jpg');
+           bg.setAttribute('alt', 'Image of the Transformers logo.');
            bg.className= "bgimg";
            tile.appendChild(bg);
 
-
-           var clickable = document.createElement("a");
-           clickable.setAttribute('href', 'javascript:gameBoard.onclick()');
-
-           clickable.appendChild(tile);
-           board.appendChild(clickable);
-
-
-           //output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+tilesArray[i]+'\')"></div>';
-
-          /* var tile = document.createElement("img");
-           tile.setAttribute('src', 'pics/0.jpg');
-           tile.setAttribute('alt', 'Image of a random Transformer.');
-           tile.className = 'tiles';
-           board.appendChild(tile);*/
+           var divLink = document.createElement("a");
+           divLink.setAttribute('href', '#');
+           divLink.appendChild(tile);
+           board.appendChild(divLink);
        }
 
    }
@@ -58,6 +43,10 @@ var Memory = {
 
 
 window.onload = Memory.init;
+
+
+
+
 
 
 
@@ -75,7 +64,7 @@ window.onload = Memory.init;
     for (var k = 0; k < gameArr.length; k++){
 
         var tile = document.createElement("img");
-        tile.setAttribute('src', 'pics/0.jpg');
+        tile.setAttribute('src', 'pics/img0.jpg');
         tile.setAttribute('alt', 'Image of a random Transformer.');
         tile.className = 'tiles';*/
    // }
@@ -93,7 +82,7 @@ window.onload = Memory.init;
         for (var i = 0; i < randomBoard.length; i++){
 
             var tile = document.createElement("img");
-            tile.setAttribute('src', 'pics/0.jpg');
+            tile.setAttribute('src', 'pics/img0.jpg');
             tile.setAttribute('alt', 'Image of a random Transformer.');
             tile.className = 'tiles';
         }
@@ -124,14 +113,3 @@ window.onload = Memory.init;
     }
 */
 
-
-//board.appendChild(randomBoard);
-//loop through the array?
-//for every array create img element
-//refer the numbers in array to name of img?
-//
-//replace title with  arr[] ??
-
-//for each img element create a element
-//place img inside a
-//append each a to page through "board".

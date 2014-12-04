@@ -145,7 +145,7 @@ MemoryGame.prototype.renderBoard=function(){
                             tries = 0; //resets number of tries.
                             //flips tiles after 1 second.
                             console.log("flipping tiles");
-                        }, 1000);
+                        }, 1300);
                     }
                 }
                 if(finds >= base.randomArr.length/2){
