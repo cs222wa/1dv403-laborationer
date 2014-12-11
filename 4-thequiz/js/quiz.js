@@ -59,8 +59,6 @@ var Quiz = {
                     restartButton.onclick=function(){
                         Quiz.init();
                     };
-
-                    //TODO Create button for restart game = Empty Question area, call on init.
                 }
             };
 
@@ -117,23 +115,3 @@ var Quiz = {
 }; //object Quiz ends
 window.onload = Quiz.init;
 
-
-//TODO Create CSS
-
-
-/*
- -/ Svarar användaren rätt så tas man vidare till nästa fråga.
- -/ Svarar man fel så får man reda på detta och får möjligheten att svara igen.
-    Felaktiga svar per fråga  (counter++ push counter into array.
-    Antal försök på varje fråga. (array[]-1; (because last count++ is the correct answer.
-
-
-
-
- Tänk på att skriva din applikation så generell så att den kan hantera förändringar i datan
- som ligger till grund för API:et. T.ex. så är det ju inte säkert att de frågenummer som
- finns idag kommer att gälla även framöver eller att antalet frågor är detsamma framöver som nu.
- Kanske kommer det att tillkomma frågor, eller tas bort frågor.
- Vi får dock utgå ifrån att första frågans nummer alltid är 1.
- (Även om det är bra om det går enkelt att justera i koden)
- */
