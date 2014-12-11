@@ -4,6 +4,8 @@ var Quiz = {
     counter: 0,
     tries: [],
     init: function(){              //start new game
+        var clearQuiz = document.getElementById("questionarea");
+        clearQuiz.innerHTML="";
         Quiz.url = "http://vhost3.lnu.se:20080/question/1"
         var click;
 
@@ -19,7 +21,6 @@ var Quiz = {
             };
             Quiz.getQuestion(postQuestion);
         };
-
         document.getElementById("answerbutton").addEventListener("click", function() {
             var xhr = new XMLHttpRequest();
             var card = document.getElementById("questionarea");
@@ -51,7 +52,13 @@ var Quiz = {
                        card.appendChild(attemptedTries);
                        //console.log(Quiz.tries[i]);
                    }
-
+                    var restartButton = document.createElement("button");
+                    var restartText = document.createTextNode("Spela igen");
+                    restartButton.appendChild(restartText);
+                    document.body.appendChild(restartButton);
+                    restartButton.onclick=function(){
+                        Quiz.init();
+                    };
 
                     //TODO Create button for restart game = Empty Question area, call on init.
                 }
