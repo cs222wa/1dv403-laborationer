@@ -42,13 +42,17 @@ var Quiz = {
 
                     var sum = Quiz.tries.reduce(function(a, b) { return a + b });
                     var gameOver = document.createElement("p");
-                    gameOver.innerHTML="Congratulations, you've answered all the questions in " + sum + " tries!";
-                  /*  var numberOfTries = document.createElement("p");
-                    numberOfTries.innerHTML="Question 1: " + Quiz.tries[0] + " tries.";*/
+                    gameOver.innerHTML="Grattis, du besvarade alla frågorna under " + sum + " försök!";
                     card.appendChild(gameOver);
-                    //card.appendChild(numberOfTries);
-                    //TODO Create P tag with number of tries per question.
-                    //Quiz.tries.length = 0;// Empty number of tries
+
+                   for( var i = 1; i < Quiz.tries.length; i++){
+                       var attemptedTries = document.createElement("p");
+                       attemptedTries.innerHTML="Fråga " + i + " krävde " + Quiz.tries[i] + " försök.";
+                       card.appendChild(attemptedTries);
+                       //console.log(Quiz.tries[i]);
+                   }
+
+
                     //TODO Create button for restart game = Empty Question area, call on init.
                 }
             };
