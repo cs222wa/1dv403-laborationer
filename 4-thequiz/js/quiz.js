@@ -1,19 +1,21 @@
 "use strict";
 var Quiz = {
     url: undefined,
+    counter: 0,
     tries: [],
     init: function(){              //start new game
         Quiz.url = "http://vhost3.lnu.se:20080/question/1"
         var click;
-        var base = this;
+
         var startGame = function(){
             var postQuestion = function(response){
                 var card = document.getElementById("questionarea");
                 var quiz = document.createElement("p");
                 quiz.innerHTML = response.question;
                 Quiz.url = response.nextURL;
-                Quiz.tries.push(0); //set number of tries in array to 0
                 card.appendChild(quiz);
+                Quiz.tries[0] = 0; //set current number of current tries in array to 0
+                console.log("tries" + Quiz.tries);
             };
             Quiz.getQuestion(postQuestion);
         };
@@ -26,27 +28,34 @@ var Quiz = {
                 toBeRemoved.parentNode.removeChild(toBeRemoved);
             }
             var correct = function(response){
-                console.log(response);
+                Quiz.counter++;
+                Quiz.tries.push(Quiz.counter);
+                console.log(Quiz.counter);
+                console.log(Quiz.tries);
+                Quiz.counter = 0;
                 card.innerHTML="";
                 if(response.nextURL != undefined ){
                     Quiz.url=response.nextURL;
                     startGame();
                 }
                 else{
+
+                    var sum = Quiz.tries.reduce(function(a, b) { return a + b });
                     var gameOver = document.createElement("p");
-                    gameOver.innerHTML="Congratulations, you've answered all the questions!";
-                    var numberOfTries = document.createElement("p");
-                    numberOfTries.innerHTML="Question 1: " + Quiz.tries[0] + " tries.";
+                    gameOver.innerHTML="Congratulations, you've answered all the questions in " + sum + " tries!";
+                  /*  var numberOfTries = document.createElement("p");
+                    numberOfTries.innerHTML="Question 1: " + Quiz.tries[0] + " tries.";*/
                     card.appendChild(gameOver);
-                    card.appendChild(numberOfTries);
+                    //card.appendChild(numberOfTries);
                     //TODO Create P tag with number of tries per question.
-                    Quiz.tries.length = 0;// Empty number of tries
+                    //Quiz.tries.length = 0;// Empty number of tries
                     //TODO Create button for restart game = Empty Question area, call on init.
                 }
             };
 
             var wrong = function(response){
-                console.log(response);
+                Quiz.counter++;
+                console.log(Quiz.counter);
                 var wrongAnswer = document.createElement("p");
                 wrongAnswer.id="remove";
                 wrongAnswer.innerHTML = "Tyvärr, det var fel. Försök igen.";//response.message;
@@ -79,11 +88,12 @@ var Quiz = {
         var jsonMessage = {
             answer: response.value
         };
-        console.log(jsonMessage);
         xhr.onreadystatechange = function(){
-            Quiz.tries.length[Quiz.tries.length-1]++;   //Add 1 to array every time an answer is given.
+            //Quiz.tries.length[Quiz.tries.length-1]++;   //Add 1 to array every time an answer is given.
             if(xhr.readyState == 4 && xhr.status === 200){
                 var question = JSON.parse(xhr.responseText);
+                Quiz.tries.length[Quiz.tries.length-1]++;
+                console.log("tries added" + Quiz.tries);
                 correct(question);
             }
             if(xhr.readyState !== 4 && xhr.status != 200){
@@ -97,17 +107,16 @@ var Quiz = {
 window.onload = Quiz.init;
 
 
-
-//TODO create click-counter for each question (array)
 //TODO Create CSS
 
 
 /*
  -/ Svarar användaren rätt så tas man vidare till nästa fråga.
  -/ Svarar man fel så får man reda på detta och får möjligheten att svara igen.
- I grundutförande ska applikationen hålla reda på hur många felaktiga svar man givit för varje fråga
- och när samtliga frågor har besvarats så ska resultatet presenteras
- där det framgår hur många försök man behövde för att klara varje fråga.
+    Felaktiga svar per fråga  (counter++ push counter into array.
+    Antal försök på varje fråga. (array[]-1; (because last count++ is the correct answer.
+
+
 
 
  Tänk på att skriva din applikation så generell så att den kan hantera förändringar i datan
