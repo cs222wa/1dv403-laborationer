@@ -1,33 +1,80 @@
 
 body {
-    background-image: url("bg.jpg");
+    background-image: url("drblue1.jpg");
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment:fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    max-height:100%;
+    max-width:100%;
+    margin: 0;
+
 }
 
 #quizcard {
-    background-color: blue;
-    width:700px;
-    height:620px;
+    background-image: url("smalltardis.png");
+    background-repeat: no-repeat;
+    position:relative;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 800px;
+    height: 900px;
+    max-width: 480px;
+    max-height: 100%;
     margin: 0 auto;
-    position: relative;
 }
+/*
+ max-width: 20%;
+    max-height: 20%;
+
+width: 800px;
+height: 900px;
+*/
 
 #questionarea {
     background-color: white;
-    width: 500px;
-    height:250px;
-    margin: 50px auto 10px auto;
-    top: 100px;
+    width: 325px;
+    height:300px;
+    margin: 0px auto 10px auto;
+    top: 203px;
     text-align: center;
     position: relative;
 }
 
 
-#questionarea p {
+#questionarea {
     margin:0 auto;
-    font-size: 80px;
+    font-size: 50px;
+    font-family: Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black","sans serif";
 }
+#questionarea p {
+    margin-top: 40px;
+}
+
+p.final {
+    margin-top: 40px;
+    font-size: 22px;
+    font-family: Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black","sans serif";
+}
+
+p.results {
+    font-size: 17px;
+    font-family: Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black","sans serif";
+}
+
+#questionarea p.results {
+    margin-top: 0px;
+}
+
+p.wrong{
+    font-size: 30px;
+    font-family: Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black","sans serif";
+}
+
 
 #panel {
     display: table;
@@ -35,3 +82,23 @@ body {
     margin-left: auto;
     margin-right: auto;
     }
+#responsearea {
+    font-size: 20px;
+    font-style: italic;
+    font-family: Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black","sans serif";
+}
+
+#answerbutton {
+    display: inline-block;
+    font-size: 20px;
+    font-family: Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black","sans serif";
+    margin-top: 35px;
+    margin-left: 10px;
+}
+
+#restart {
+    display: block;
+    font-size: 20px;
+    font-family: Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black","sans serif";
+    margin: 20px auto;
+}

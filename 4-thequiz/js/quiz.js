@@ -21,6 +21,8 @@ var Quiz = {
             };
             Quiz.getQuestion(postQuestion);
         };
+
+
         document.getElementById("answerbutton").addEventListener("click", function() {
             var xhr = new XMLHttpRequest();
             var card = document.getElementById("questionarea");
@@ -43,19 +45,23 @@ var Quiz = {
 
                     var sum = Quiz.tries.reduce(function(a, b) { return a + b });
                     var gameOver = document.createElement("p");
+                    gameOver.className="final";
                     gameOver.innerHTML="Grattis, du besvarade alla frågorna under " + sum + " försök!";
                     card.appendChild(gameOver);
 
                    for( var i = 1; i < Quiz.tries.length; i++){
                        var attemptedTries = document.createElement("p");
+                       attemptedTries.className="results";
                        attemptedTries.innerHTML="Fråga " + i + " krävde " + Quiz.tries[i] + " försök.";
                        card.appendChild(attemptedTries);
                        //console.log(Quiz.tries[i]);
                    }
                     var restartButton = document.createElement("button");
                     var restartText = document.createTextNode("Spela igen");
+                    restartButton.id="restart";
                     restartButton.appendChild(restartText);
-                    document.body.appendChild(restartButton);
+                    var panel = document.getElementById("panel");
+                    panel.appendChild(restartButton);
                     restartButton.onclick=function(){
                         Quiz.init();
                     };
@@ -66,9 +72,21 @@ var Quiz = {
                 Quiz.counter++;
                 console.log(Quiz.counter);
                 var wrongAnswer = document.createElement("p");
+                wrongAnswer.className="wrong";
                 wrongAnswer.id="remove";
                 wrongAnswer.innerHTML = "Tyvärr, det var fel. Försök igen.";//response.message;
                 card.appendChild(wrongAnswer);
+            };
+
+            var listenArea = document.getElementById("responsearea");
+            listenArea.onkeydown = function(e) {
+                if (!e) {
+                    e = window.event;
+                }
+                if(e.keyCode === 13 && !e.shiftKey){     //if enter is pressed without shift key
+                    Quiz.sendAnswer(correct, wrong);
+                    listenArea.value = "";              //clear textarea.
+                }
             };
         Quiz.sendAnswer(correct, wrong);
         });
@@ -115,3 +133,8 @@ var Quiz = {
 }; //object Quiz ends
 window.onload = Quiz.init;
 
+//TODO CSS
+//TODO Tab-funktionen förstör loopen som tar bort felmeddelandena.
+//TODO Tab-funktionen kan inte användas förrän knappen skicka har tryckts in en gång.
+//TODO Meddelanden om antalet försök nollställs inte vid nytt spel
+//TODO Restart-knappen läggs i hörnet på sidan
