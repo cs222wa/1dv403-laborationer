@@ -6,7 +6,8 @@ var Quiz = {
     init: function(){              //start new game
         var clearQuiz = document.getElementById("questionarea");
         clearQuiz.innerHTML="";
-        Quiz.url = "http://vhost3.lnu.se:20080/question/1"
+        Quiz.tries= [];
+        Quiz.url = "http://vhost3.lnu.se:20080/question/1";
         var click;
 
         var startGame = function(){
@@ -21,7 +22,6 @@ var Quiz = {
             };
             Quiz.getQuestion(postQuestion);
         };
-
 
         document.getElementById("answerbutton").addEventListener("click", function() {
             var xhr = new XMLHttpRequest();
@@ -42,7 +42,6 @@ var Quiz = {
                     startGame();
                 }
                 else{
-
                     var sum = Quiz.tries.reduce(function(a, b) { return a + b });
                     var gameOver = document.createElement("p");
                     gameOver.className="final";
@@ -64,10 +63,10 @@ var Quiz = {
                     panel.appendChild(restartButton);
                     restartButton.onclick=function(){
                         Quiz.init();
+                        restartButton.outerHTML="";
                     };
                 }
             };
-
             var wrong = function(response){
                 Quiz.counter++;
                 console.log(Quiz.counter);
@@ -77,7 +76,6 @@ var Quiz = {
                 wrongAnswer.innerHTML = "Tyvärr, det var fel. Försök igen.";//response.message;
                 card.appendChild(wrongAnswer);
             };
-
             var listenArea = document.getElementById("responsearea");
             listenArea.onkeydown = function(e) {
                 if (!e) {
@@ -133,8 +131,5 @@ var Quiz = {
 }; //object Quiz ends
 window.onload = Quiz.init;
 
-//TODO CSS
 //TODO Tab-funktionen förstör loopen som tar bort felmeddelandena.
 //TODO Tab-funktionen kan inte användas förrän knappen skicka har tryckts in en gång.
-//TODO Meddelanden om antalet försök nollställs inte vid nytt spel
-//TODO Restart-knappen läggs i hörnet på sidan
