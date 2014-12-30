@@ -1,0 +1,21 @@
+
+
+#desktop{
+    background-image: url("../img/wallp3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-attachment: fixed;
+    min-width: 100%;
+    min-height: 100vh;
+    margin: auto;
+    background-color: darkviolet;
+}
+
+#icontray{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+}
