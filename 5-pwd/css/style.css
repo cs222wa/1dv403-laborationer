@@ -1,4 +1,10 @@
-
+/*
+magenta pink - #d824d5
+purple - #5c0081
+dark purple - #1d0129
+black
+white
+*/
 
 #desktop{
     background-image: url("../img/wallp3.jpg");
@@ -15,7 +21,13 @@
 #icontray{
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
-    height: 80px;
+    height: 90px;
     position: fixed;
     bottom: 0;
+}
+
+.icons{
+    width: 80px;
+    height: auto;
+    margin: 5px;
 }
