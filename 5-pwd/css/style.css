@@ -4,10 +4,14 @@ purple - #5c0081
 dark purple - #1d0129
 black
 white
+
+
+1920
+1080
 */
 
 #desktop{
-    background-image: url("../img/wallp3.jpg");
+    background-image: url("../img/gallery/tmnt.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
