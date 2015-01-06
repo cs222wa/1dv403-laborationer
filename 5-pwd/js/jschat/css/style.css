@@ -1,0 +1,92 @@
+
+h1 {
+    visibility: hidden;
+}
+
+
+body {
+    margin: 0;
+    background-color: #e6ebe5;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#wrapper{
+    background-color: white;
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    clear: both;
+    width: 1200px;
+    height:100vh;
+    overflow: hidden;
+    border-style: double;
+    border-color: black;
+    border-width: 2px;
+}
+
+#content {
+    margin-left: 20%;
+    margin-bottom: 10%;
+}
+
+#display {
+    width: 680px;
+    height: 300px;
+    overflow: auto;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.messagediv{
+    width: auto;
+    padding: 5px;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(0, 0, 0, .15);
+    word-wrap: break-word;
+    overflow: auto;
+}
+
+#foot {
+    background-color: white;
+}
+
+p {
+    font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.small {
+    font-size: 12px;
+    font-style: italic;
+    clear: both;
+ }
+
+.smallright {
+    font-size: 12px;
+    font-style: italic;
+    float: right;
+    clear: both;
+    color: #9a1027;
+}
+
+.deleteicon {
+    width: 15px;
+    height: 15px;
+    float: right;
+    clear: both;
+    margin: 5px
+}
+
+.timeicon {
+    width: 15px;
+    height: 15px;
+    float: right;
+    clear: left;
+    margin: 5px
+}

@@ -1,0 +1,42 @@
+
+body{
+   
+    background-color: blue;
+}
+
+.MemoryGameBoard{
+    background: dimgray;
+    width:825px;
+    height:825px;
+    border:#999 1px solid;
+    margin: 0 auto;
+    margin-top: 13vh;
+}
+
+
+.MemoryGameBoard .bgimg {
+    width: 200px;
+    height: 200px;
+}
+.MemoryGameBoard .clear {
+    clear: both;
+}
+
+.MemoryGameBoard .tile{
+    border:#000 1px solid;
+    width: 200px;
+    height: 200px;
+    float:left;
+    margin: 2px;
+}
+
+.faceUp {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    transition: 0.7s;
+    transform-style: preserve-3d;
+
+
+}
