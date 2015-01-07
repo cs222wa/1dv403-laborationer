@@ -1,20 +1,7 @@
-/*
-magenta pink - #d824d5
-purple - #5c0081
-dark purple - #1d0129
-black
-white
-
-
-1920
-1080
-*/
-
-#desktop{
+#wallpaper{
     background-image: url("../img/desktop/square.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
     background-attachment: fixed;
     min-width: 100%;
     min-height: 100vh;
@@ -34,4 +21,10 @@ white
     width: 80px;
     height: auto;
     margin: 5px;
+}
+
+.window{
+    width: 300px;
+    length: 500px;
+    background-color: white;
 }
