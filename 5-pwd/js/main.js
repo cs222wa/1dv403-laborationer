@@ -1,13 +1,10 @@
 "use strict";
 var Main = {
     init: function(){
-       document.getElementByID("gallerylink").onclick= Main.galleryWindow();
-    },
-    galleryWindow: function(){
-        var desktop = document.getElementById("desktop");
-        var windowDiv = document.createElement("div");
-        windowDiv.className="window";
-        desktop.appendChild(windowDiv);
+        document.getElementById("gallerylink").onclick=Gallery.init();
+        //Skicka onclick till window-konstruktor i main.js och
+        // där skapa div-taggen och tilldela egenskaperna width, height, bg-color
+        //och sedan skicka window-objektet till Gallery.init och appenda där istället?
     }
 };
 

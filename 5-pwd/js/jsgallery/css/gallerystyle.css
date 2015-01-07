@@ -1,0 +1,32 @@
+.gallerywindow{
+    width: 800px;
+    height: 600px;
+    background-color: white;
+    left: 100px;
+    top: 100px;
+    border: solid;
+    border-width: 1px;
+    border-color: lightblue;
+}
+
+.closeWindowIcon{
+    width: 20px;
+    height: auto;
+    float: right;
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+
+/* Fönster för galleri - krav
+ • En ram runt hela fönstret.
+ • En knapp för att stänga fönstret.
+
+
+ • En liten ikon i övre vänstra hörnet tillsammans
+ med en text.
+ • En statusrad i vilken det ska gå att skriva ut
+ information.
+ • En tom yta i vilken man ska kunna lägga in valfritt
+ innehåll.
+ */
