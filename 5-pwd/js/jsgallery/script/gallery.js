@@ -52,11 +52,40 @@ var Gallery = {
         //Gallery.windowDiv.appendChild(closingLink);
         //Gallery.windowDiv.appendChild(galleryIcon);
         Gallery.desktop.appendChild( Gallery.windowDiv);
+        Gallery.renderGallery();
         return false;
+
 
     },
 
-    renderGallery: function(galleryBg){
+    renderGallery: function(){
+
+        var requestGallery = new XMLHttpRequest();
+        requestGallery.onreadystatechange = function(){
+            if(requestGallery.readyState==4){
+                if (requestGallery.status==200){
+                    console.log(requestGallery.responseText);
+                    var data = JSON.parse(requestGallery.responseText);
+                    for (var i=0; i<data.length; i++) {
+                        console.log("Image url = " + data[i].URL);
+                        console.log("Image width = " + data[i].width);
+                        console.log("Image height = " + data[i].height);
+                        console.log("Image thumbURL = " + data[i].thumbURL);
+                        console.log("Image thumbWidth = " + data[i].thumbWidth);
+                        console.log("Image thumbHeight = " + data[i].thumbHeight);
+                    }
+                }
+                else{
+                    console.log("Läsfel status: " + requestGallery.status);
+                }
+            }
+        };
+        requestGallery.open("GET", "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", true);
+        requestGallery.send(null);
+
+        //json-object
+        //var egenskap i objectet = JSON.parse(json-object);
+        //alert(egenskap i objectet[0].egenskap);
 
     },
 
