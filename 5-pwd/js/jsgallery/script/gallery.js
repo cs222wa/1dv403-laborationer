@@ -93,17 +93,12 @@ var Gallery = {
                         thumb.setAttribute("src", data[i].thumbURL);
                         thumb.setAttribute("alt", "thumbnail");
                         thumb.className="thumbnail";
-
+                        thumb.style.maxWidth=data[i].thumbWidth;
+                        thumb.style.maxHeight= data[i].thumbHeight;
 
                         //create link for gallery images
                         var bgLink = document.createElement("a");
                         bgLink.setAttribute("href", "");
-
-                        bgLink.onclick= function(){
-                            var bg = document.getElementById("wallpaper");
-                            bg.style.backgroundImage= "url("+data[i].URL+")  repeat";
-                            return false;
-                        };
 
                         //append thumb to bgLink
                         bgLink.appendChild(thumb);
@@ -138,18 +133,4 @@ var Gallery = {
         Gallery.windowDiv.parentNode.removeChild( Gallery.windowDiv);
     }
 };
-
-
-
-
-
-//ändra bakgrundsfärg via id ?
-/*
- function changeBGColor() {
- var bg =     document.getElementsById('wallpaper');
-
- bg.style.background-image =    'src', data[i].URL ;
-
- }
- */
 
