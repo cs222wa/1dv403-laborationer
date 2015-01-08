@@ -3,6 +3,8 @@ var Gallery = {
 
     desktop : undefined ,
     windowDiv : undefined,
+    galleryDiv: undefined,
+    galleryLoading: undefined,
 
     init: function(){
 
@@ -10,9 +12,19 @@ var Gallery = {
         Gallery.desktop = document.getElementById("desktop");
         Gallery.windowDiv = document.createElement("div");
         Gallery.windowDiv.className="gallerywindow";
+//Skapa div för gallery div
+        Gallery.galleryDiv=document.createElement("div");
+        Gallery.galleryDiv.className="gallerydiv";
 //Skapa div för bottom-bar
         var bottomBar = document.createElement("div");
         bottomBar.className="bottombar";
+
+//skapa loading-gif
+        Gallery.galleryLoading = document.createElement("img");
+        Gallery.galleryLoading.setAttribute("src", "js/jsgallery/img/loading.gif");
+        Gallery.galleryLoading.setAttribute("alt", "Loading bar");
+        Gallery.galleryLoading.className="loadingbar";
+
 //Skapa div för top-bar
         var topBar = document.createElement("div");
         topBar.className="topbar";
@@ -45,6 +57,12 @@ var Gallery = {
         topBar.appendChild(closingLink);
 //append top-bar to main div
         Gallery.windowDiv.appendChild(topBar);
+//append galleryDiv to main div
+        Gallery.windowDiv.appendChild(Gallery.galleryDiv);
+
+//append loading-gif to bottom-bar
+        bottomBar.appendChild(Gallery.galleryLoading);
+
 //append bottom-bar to main div
         Gallery.windowDiv.appendChild(bottomBar);
 //append main div to desktop
@@ -54,8 +72,6 @@ var Gallery = {
         Gallery.desktop.appendChild( Gallery.windowDiv);
         Gallery.renderGallery();
         return false;
-
-
     },
 
     renderGallery: function(){
@@ -67,37 +83,73 @@ var Gallery = {
                     console.log(requestGallery.responseText);
                     var data = JSON.parse(requestGallery.responseText);
                     for (var i=0; i<data.length; i++) {
+
+                        //create thumbBox
+                        var thumbBox = document.createElement("div");
+                        thumbBox.className="thumbcontainer";
+
+                        //create thumbnail
+                        var thumb = document.createElement("img");
+                        thumb.setAttribute("src", data[i].thumbURL);
+                        thumb.setAttribute("alt", "thumbnail");
+                        thumb.className="thumbnail";
+
+
+                        //create link for gallery images
+                        var bgLink = document.createElement("a");
+                        bgLink.setAttribute("href", "");
+
+                        bgLink.onclick= function(){
+                            var bg = document.getElementById("wallpaper");
+                            bg.style.backgroundImage= "url("+data[i].URL+")  repeat";
+                            return false;
+                        };
+
+                        //append thumb to bgLink
+                        bgLink.appendChild(thumb);
+
+                        //append bgLink to thumbBox
+                        thumbBox.appendChild(bgLink);
+                        //append thumbBox to Gallery.galleryDiv
+                        Gallery.galleryDiv.appendChild(thumbBox);
+
+                        /*
                         console.log("Image url = " + data[i].URL);
                         console.log("Image width = " + data[i].width);
                         console.log("Image height = " + data[i].height);
                         console.log("Image thumbURL = " + data[i].thumbURL);
                         console.log("Image thumbWidth = " + data[i].thumbWidth);
                         console.log("Image thumbHeight = " + data[i].thumbHeight);
+                        */
                     }
                 }
                 else{
-                    console.log("Läsfel status: " + requestGallery.status);
+                    alert("Läsfel status: " + requestGallery.status);
                 }
+                //remove Gallery.galleryLoading from bottom-div.
+                Gallery.galleryLoading.parentNode.removeChild( Gallery.galleryLoading);
             }
         };
         requestGallery.open("GET", "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", true);
         requestGallery.send(null);
-
-        //json-object
-        //var egenskap i objectet = JSON.parse(json-object);
-        //alert(egenskap i objectet[0].egenskap);
-
     },
 
     closeGallery: function(){
         Gallery.windowDiv.parentNode.removeChild( Gallery.windowDiv);
-
-}
+    }
 };
 
 
 
 
 
+//ändra bakgrundsfärg via id ?
+/*
+ function changeBGColor() {
+ var bg =     document.getElementsById('wallpaper');
 
+ bg.style.background-image =    'src', data[i].URL ;
+
+ }
+ */
 
