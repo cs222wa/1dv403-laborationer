@@ -3,64 +3,65 @@ var pwd = pwd||{};  //Namespace
 
 pwd.AppWindow = function(){ //konstruktor
     //deklarera egenskaper  this.egenskap = 0/false/undefined;
+    this.appIcon = undefined;
+    this.appTitle = undefined;
+    this.contentDiv = undefined;
+    this.windowDiv = undefined;
+    this.galleryLoading = undefined;
+    this.x = undefined;
+    this.y = undefined;
 };
 
-pwd.AppWindow.prototype.WindowConstructor    = function(type, resizable, self, xPos, yPos){ //konstruktor 2
+pwd.AppWindow.prototype.WindowConstructor    = function(icon, title, x, y){ //konstruktor 2
     //initera egneskaperna från första konstruktorn  this.egenskap = egenskap;
+    this.appIcon = icon;
+    this.appTitle = title;
+    this.x = x;
+    this.y = y;
     this.renderHTML();
 };
 
 pwd.AppWindow.prototype.renderHTML         = function() {
+    console.log("writing HTML");
     var base = this;
 //Skapa main div
-    base.application = document.createElement("div");
-    base.application.classList.add("appwindow");
-    base.application.style.left = this.xPos + "px";
-    base.application.style.top = this.yPos + "px";
-    base.application.style.zIndex = "10";
-    base.application.onmousedown = this.focusAppWindow;
-
-//Skapa div för app innehåll
-    base.appContentDiv = document.createElement("div");
-    base.appContentDiv.className = "appcontentdiv";
-
+    base.windowDiv = document.createElement("div");
+    base.windowDiv.className="appWindow";
+    base.windowDiv.style.top=base.y+"px";
+    base.windowDiv.style.left=base.x+"px";
+//Skapa div för gallery div
+    base.contentDiv=document.createElement("div");
+    base.contentDiv.className="contentDiv";
 //Skapa div för bottom-bar
     var bottomBar = document.createElement("div");
-    bottomBar.className = "bottombar";
-
+    bottomBar.className="bottomBar";
 //skapa loading-gif
-    base.loadingBar = document.createElement("img");
-    base.loadingBar.setAttribute("src", "img/loading.gif");
-    base.loadingBar.setAttribute("alt", "Loading bar");
-    base.loadingBar.className = "loadingbar";
-
+    base.loadingImg = document.createElement("img");
+    base.loadingImg.setAttribute("src", "js/jsgallery/img/loading.gif");
+    base.loadingImg.setAttribute("alt", "Loading bar");
+    base.loadingImg.className="loadingBar";
 //Skapa div för top-bar
     var topBar = document.createElement("div");
-    topBar.className = "topbar";
-
+    topBar.className="topBar";
 //Skapa element att lägga i top-bar
 //skapa icon
     var appIcon = document.createElement("img");
-    appIcon.setAttribute("src", "img/desktop/bsgalleryicon.png");
+    appIcon.setAttribute("src", base.appIcon);
     appIcon.setAttribute("alt", "gallery icon");
-    appIcon.className = "appIcon";
-
-    /*
-     //skapa text
-     var appHeaderText = document.createElement("p");
-     appHeaderText.innerHTML="Bildgalleri";
-     appHeaderText.className="appWindowHeader";
-     */
-
+    appIcon.className="appIcon";
+//skapa text
+    var headerText = document.createElement("p");
+    headerText.innerHTML=base.appTitle;
+    headerText.className="windowHeader";
 //skapa a href
-    var closingLink = document.createElement("a");
+    var closingLink=document.createElement("a");
     closingLink.setAttribute('href', '#');
 //skapa close-img
     var closeWindowButton = document.createElement("img");
-    closeWindowButton.setAttribute("src", "img/close.png");
+    closeWindowButton.setAttribute("src", "js/jsgallery/img/close.png");
     closeWindowButton.setAttribute("alt", "a small cross");
-    closeWindowButton.className = "closeWindowIcon";
-    closingLink.onclick = function () {
+    closeWindowButton.className="closeWindowIcon";
+    closingLink.onclick= function(){
         base.closeGallery();
         return false;
     };
@@ -68,28 +69,20 @@ pwd.AppWindow.prototype.renderHTML         = function() {
     closingLink.appendChild(closeWindowButton);
 //append icon to top-bar
     topBar.appendChild(appIcon);
-
-    /*
-     //append text to top-bar
-     topBar.appendChild(galleryText);
-     */
-
+//append text to top-bar
+    topBar.appendChild(headerText);
 //append ahref to top-bar
     topBar.appendChild(closingLink);
 //append top-bar to main div
     base.windowDiv.appendChild(topBar);
-//append window div to main div
-    base.windowDiv.appendChild(base.appContentDiv);
+//append galleryDiv to main div
+    base.windowDiv.appendChild(base.contentDiv);
 //append loading-gif to bottom-bar
-    bottomBar.appendChild(base.loadingBar);
+    bottomBar.appendChild(base.loadingImg);
 //append bottom-bar to main div
-    application.appendChild(bottomBar);
+    base.windowDiv.appendChild(bottomBar);
 //append main div to desktop
-    //Gallery.windowDiv.appendChild(closingLink);
-    //Gallery.windowDiv.appendChild(galleryIcon);
-    this.desktop.appendChild(base.application);
-    return false;
-//this.img + "close.png"  ??
+    document.querySelector("#desktop").appendChild( base.windowDiv);
 };
 
 pwd.AppWindow.prototype.focusAppWindow        = function(){
