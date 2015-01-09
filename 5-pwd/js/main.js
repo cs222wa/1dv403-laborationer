@@ -2,7 +2,12 @@
 var Main = {
 
     init: function(){
-        document.getElementById("gallerylink").onclick=Gallery;
+        document.getElementById("gallerylink").onclick=function(){
+            new Gallery();
+            return false
+        };
+
+
         //Skicka onclick till window-konstruktor i main.js och
         // där skapa div-taggen och tilldela egenskaperna width, height, bg-color
         //och sedan skicka window-objektet till Gallery.init och appenda där istället?

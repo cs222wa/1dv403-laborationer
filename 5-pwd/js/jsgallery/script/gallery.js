@@ -7,48 +7,47 @@ function Gallery(){
     this.galleryDiv=document.createElement("div");
     this.galleryLoading = document.createElement("img");
     this.renderGalleryWindow();
-    this.closeGallery();
-    return false;
 }
 
-Gallery.prototype.renderGalleryWindow=function(){
-    var base = this;
+    Gallery.prototype.renderGalleryWindow=function(){
+        var base = this;
 //Skapa main div
-    base.windowDiv.className="gallerywindow";
+        base.windowDiv.className="gallerywindow";
 //Skapa div för gallery div
-    base.galleryDiv.className="gallerydiv";
+        base.galleryDiv.className="gallerydiv";
 //Skapa div för bottom-bar
-    var bottomBar = document.createElement("div");
-    bottomBar.className="bottombar";
-
+        var bottomBar = document.createElement("div");
+        bottomBar.className="bottombar";
 //skapa loading-gif
-    base.galleryLoading = document.createElement("img");
-    base.galleryLoading.setAttribute("src", "js/jsgallery/img/loading.gif");
-    base.galleryLoading.setAttribute("alt", "Loading bar");
-    base.galleryLoading.className="loadingbar";
-
+        base.galleryLoading = document.createElement("img");
+        base.galleryLoading.setAttribute("src", "js/jsgallery/img/loading.gif");
+        base.galleryLoading.setAttribute("alt", "Loading bar");
+        base.galleryLoading.className="loadingbar";
 //Skapa div för top-bar
-    var topBar = document.createElement("div");
-    topBar.className="topbar";
+        var topBar = document.createElement("div");
+        topBar.className="topbar";
 //Skapa element att lägga i top-bar
 //skapa icon
-    var galleryIcon = document.createElement("img");
-    galleryIcon.setAttribute("src", "img/desktop/bsgalleryicon.png");
-    galleryIcon.setAttribute("alt", "gallery icon");
-    galleryIcon.className="galleryIcon";
+        var galleryIcon = document.createElement("img");
+        galleryIcon.setAttribute("src", "img/desktop/bsgalleryicon.png");
+        galleryIcon.setAttribute("alt", "gallery icon");
+        galleryIcon.className="galleryIcon";
 //skapa text
-    var galleryText = document.createElement("p");
-    galleryText.innerHTML="Bildgalleri";
-    galleryText.className="galleryWindowHeader";
+        var galleryText = document.createElement("p");
+        galleryText.innerHTML="Bildgalleri";
+        galleryText.className="galleryWindowHeader";
 //skapa a href
-    var closingLink=document.createElement("a");
-    closingLink.setAttribute('href', '#');
+        var closingLink=document.createElement("a");
+        closingLink.setAttribute('href', '#');
 //skapa close-img
-    var closeWindowButton = document.createElement("img");
-    closeWindowButton.setAttribute("src", "js/jsgallery/img/close.png");
-    closeWindowButton.setAttribute("alt", "a small cross");
-    closeWindowButton.className="closeWindowIcon";
-    closingLink.onclick=this.closeGallery;
+        var closeWindowButton = document.createElement("img");
+        closeWindowButton.setAttribute("src", "js/jsgallery/img/close.png");
+        closeWindowButton.setAttribute("alt", "a small cross");
+        closeWindowButton.className="closeWindowIcon";
+        closingLink.onclick= function(){
+            base.closeGallery();
+            return false;
+        };
 //append close-img to a href
     closingLink.appendChild(closeWindowButton);
 //append icon to top-bar
@@ -61,17 +60,15 @@ Gallery.prototype.renderGalleryWindow=function(){
     base.windowDiv.appendChild(topBar);
 //append galleryDiv to main div
     base.windowDiv.appendChild(base.galleryDiv);
-
 //append loading-gif to bottom-bar
     bottomBar.appendChild(base.galleryLoading);
-
 //append bottom-bar to main div
     base.windowDiv.appendChild(bottomBar);
 //append main div to desktop
-
     //Gallery.windowDiv.appendChild(closingLink);
     //Gallery.windowDiv.appendChild(galleryIcon);
     this.desktop.appendChild( base.windowDiv);
+    base.renderGallery();
     return false;
 };
 
@@ -84,11 +81,9 @@ Gallery.prototype.renderGallery=function(){
                 console.log(requestGallery.responseText);
                 var data = JSON.parse(requestGallery.responseText);
                 for (var i=0; i<data.length; i++) {
-
                     //create thumbBox
                     var thumbBox = document.createElement("div");
                     thumbBox.className="thumbcontainer";
-
                     //create thumbnail
                     var thumb = document.createElement("img");
                     thumb.setAttribute("src", data[i].thumbURL);
@@ -96,14 +91,11 @@ Gallery.prototype.renderGallery=function(){
                     thumb.className="thumbnail";
                     thumb.style.maxWidth=data[i].thumbWidth;
                     thumb.style.maxHeight= data[i].thumbHeight;
-
                     //create link for gallery images
                     var bgLink = document.createElement("a");
-                    bgLink.setAttribute("href", "");
-
+                    bgLink.setAttribute("href", "#");
                     //append thumb to bgLink
                     bgLink.appendChild(thumb);
-
                     //append bgLink to thumbBox
                     thumbBox.appendChild(bgLink);
                     //append thumbBox to Gallery.galleryDiv
@@ -119,13 +111,12 @@ Gallery.prototype.renderGallery=function(){
  };
  requestGallery.open("GET", "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", true);
  requestGallery.send(null);
-
 };
 
 
 Gallery.prototype.closeGallery = function(){
     var base = this;
-    base.windowDiv.parentNode.removeChild( base.windowDiv);
+    base.windowDiv.parentNode.removeChild(base.windowDiv);
 };
 
 /*
