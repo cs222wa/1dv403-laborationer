@@ -1,15 +1,14 @@
 "use strict";
+var pwd = pwd||{};  //Namespace
 
-
-function Gallery(){
+pwd.Gallery = function(){
     this.desktop = document.getElementById("desktop");
     this.windowDiv = document.createElement("div");
     this.galleryDiv=document.createElement("div");
     this.galleryLoading = document.createElement("img");
     this.renderGalleryWindow();
-}
-
-    Gallery.prototype.renderGalleryWindow=function(){
+};
+pwd.Gallery.prototype.renderGalleryWindow=function(){
         var base = this;
 //Skapa main div
         base.windowDiv.className="gallerywindow";
@@ -72,7 +71,7 @@ function Gallery(){
     return false;
 };
 
-Gallery.prototype.renderGallery=function(){
+pwd.Gallery.prototype.renderGallery=function(){
     var base = this;
     var requestGallery = new XMLHttpRequest();
     requestGallery.onreadystatechange = function(){
@@ -114,7 +113,7 @@ Gallery.prototype.renderGallery=function(){
 };
 
 
-Gallery.prototype.closeGallery = function(){
+pwd.Gallery.prototype.closeGallery = function(){
     var base = this;
     base.windowDiv.parentNode.removeChild(base.windowDiv);
 };

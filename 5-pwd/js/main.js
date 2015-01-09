@@ -1,9 +1,10 @@
 "use strict";
-var Main = {
+var pwd = pwd||{};  //Namespace
+pwd.Main = {
 
     init: function(){
         document.getElementById("gallerylink").onclick=function(){
-            new Gallery();
+            new pwd.Gallery();
             return false
         };
 
@@ -14,12 +15,10 @@ var Main = {
     }
 };
 
-window.onload = Main.init;
-
+window.onload = pwd.Main.init;
 
 // skapa div-fönster först
 
 // onlick länk - skapa ny applikation - specifik per länk
-
 
 // använd arv så att minimera kod för att undvika upprepning
