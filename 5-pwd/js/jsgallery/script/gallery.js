@@ -1,15 +1,15 @@
 "use strict";
-var pwd = pwd||{};  //Namespace
+var PWD = PWD||{};  //Namespace
 
 
-pwd.Gallery = function(x, y){
+PWD.Gallery = function(x, y){
     this.WindowConstructor("img/desktop/bsgalleryicon.png", "Bildgalleri", x, y);
     this.desktop = document.getElementById("desktop");
     this.renderGallery();
 };
 
 
-pwd.GalleryImage = function(x, y, imgURL){
+PWD.GalleryImage = function(x, y, imgURL){
     this.WindowConstructor("img/desktop/bsgalleryicon.png", "", x, y);
     this.desktop = document.getElementById("desktop");
     this.URL = imgURL;
@@ -17,9 +17,9 @@ pwd.GalleryImage = function(x, y, imgURL){
     this.renderImage();
 };
 
-pwd.GalleryImage.prototype = new pwd.AppWindow();
-pwd.GalleryImage.constructor = pwd.GalleryImage;
-pwd.GalleryImage.prototype.renderImage = function(){
+PWD.GalleryImage.prototype = new PWD.AppWindow();
+PWD.GalleryImage.constructor = PWD.GalleryImage;
+PWD.GalleryImage.prototype.renderImage = function(){
     var base = this;
     var bigImage = document.createElement("img");
     bigImage.setAttribute("src", base.URL);
@@ -31,9 +31,9 @@ pwd.GalleryImage.prototype.renderImage = function(){
 };
 
 
-pwd.Gallery.prototype = new pwd.AppWindow();
-pwd.Gallery.constructor = pwd.Gallery;
-pwd.Gallery.prototype.renderGallery=function(){
+PWD.Gallery.prototype = new PWD.AppWindow();
+PWD.Gallery.constructor = PWD.Gallery;
+PWD.Gallery.prototype.renderGallery=function(){
     var base = this;
     var loadingImg = document.createElement("img");
     loadingImg.setAttribute("src", "img/loading.gif");
@@ -42,7 +42,7 @@ pwd.Gallery.prototype.renderGallery=function(){
     loadingImg.id="load";
     var requestGallery = new XMLHttpRequest();
     requestGallery.onreadystatechange = function(){
-        pwd.AppWindow.prototype.setLoadStatus(loadingImg);
+        base.setLoadStatus(loadingImg);
         if(requestGallery.readyState==4){
             if (requestGallery.status==200){
                 console.log(requestGallery.responseText);
@@ -62,17 +62,17 @@ pwd.Gallery.prototype.renderGallery=function(){
                     bgLink.setAttribute("href", "#");
                     bgLink.id="imageLink";
                     bgLink.onclick = function(){
-                        new pwd.GalleryImage(pwd.Main.calcX(pwd.Main.appCounterX), pwd.Main.calcY(pwd.Main.appCounterY),image.URL);
+                        new PWD.GalleryImage(PWD.Main.calcX(PWD.Main.appCounterX), PWD.Main.calcY(PWD.Main.appCounterY),image.URL);
                         console.log(image.URL);
-                        pwd.Main.appCounterY++;
-                        pwd.Main.appCounterX++;
-                        if(pwd.Main.appCounterY >= 15){
-                            pwd.Main.appCounterY = 0;
-                            pwd.Main.calcY(pwd.Main.appCounterY);
+                        PWD.Main.appCounterY++;
+                        PWD.Main.appCounterX++;
+                        if(PWD.Main.appCounterY >= 15){
+                            PWD.Main.appCounterY = 0;
+                            PWD.Main.calcY(PWD.Main.appCounterY);
                         }
-                        if(pwd.Main.appCounterX >= 45){
-                            pwd.Main.appCounterX = 0;
-                            pwd.Main.calcX(pwd.Main.appCounterX);
+                        if(PWD.Main.appCounterX >= 45){
+                            PWD.Main.appCounterX = 0;
+                            PWD.Main.calcX(PWD.Main.appCounterX);
                         }
                         return false
                 };
@@ -89,7 +89,7 @@ pwd.Gallery.prototype.renderGallery=function(){
  else{
  alert("Läsfel status: " + requestGallery.status);
  }
-            pwd.AppWindow.prototype.removeLoadstatus();
+            base.removeLoadstatus();
  }
  };
  requestGallery.open("GET", "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", true);

@@ -1,60 +1,5 @@
-.gallerywindow{
-    width: 600px;
-    height: 400px;
-    background-color: white;
-    left: 100px;
-    top: 100px;
-    border: solid;
-    border-width: 1px;
-    border-color: lightblue;
-    border-radius: 5px;
-    position:relative
-}
-.topbar{
-    height: 35px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    margin: 0;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-}
-.closeWindowIcon{
-    width: 20px;
-    height: auto;
-    float: right;
-    margin-top: 4px;
-    margin-right: 4px;
-}
 
-.galleryIcon{
-    width: 25px;
-    height: auto;
-    float: left;
-    margin-top: 4px;
-    margin-left: 4px;
-    border: solid;
-    border-color: lightsteelblue;
-    border-width: 1px;
-    border-radius: 4px;
-}
-
-.galleryWindowHeader{
-    font-family: Geneva,Tahoma,Verdana,sans-serif;
-    font-weight: bold;
-    color: lightsteelblue;  /*B0C4DE*/
-    margin: 0;
-    float: left;
-    margin-left: 15px;
-    padding-top: 6px;
-}
-
-.gallerydiv{
-    background-color: #fafbff;
-    height: 85%;
-    overflow-y: scroll;
-}
-
-.thumbcontainer{
+.thumbContainer{
     width: 75px;
     height: 50px;
     background-color: lightsteelblue;
@@ -65,21 +10,7 @@
     border-radius: 4px;
 }
 
-.thumbnail{
-
-}
-
-.bottombar{
-    height: 25px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    margin: 0;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    position:absolute;
-    bottom:0;
-}
-
-.loadingbar{
-    margin-top: 3px;
+.bigImage{
+    height: 100%;
+    width: auto;
 }
