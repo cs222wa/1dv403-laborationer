@@ -102,8 +102,6 @@ pwd.AppWindow.prototype.focusAppWindow  = function(){
     this.style.zIndex = "5";
 };
 
-
-
 pwd.AppWindow.prototype.closeWindow = function(){
     var base = this;
     base.windowDiv.parentNode.removeChild(base.windowDiv);
