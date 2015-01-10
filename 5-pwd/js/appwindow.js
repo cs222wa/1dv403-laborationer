@@ -1,6 +1,5 @@
 "use strict";
 var pwd = pwd||{};  //Namespace
-
 pwd.AppWindow = function(){ //konstruktor
     //deklarera egenskaper  this.egenskap = 0/false/undefined;
     this.appIcon = undefined;
@@ -11,7 +10,6 @@ pwd.AppWindow = function(){ //konstruktor
     this.x = undefined;
     this.y = undefined;
 };
-
 pwd.AppWindow.prototype.WindowConstructor    = function(icon, title, x, y){ //konstruktor 2
     //initera egneskaperna från första konstruktorn  this.egenskap = egenskap;
     this.appIcon = icon;
@@ -20,7 +18,6 @@ pwd.AppWindow.prototype.WindowConstructor    = function(icon, title, x, y){ //ko
     this.y = y;
     this.renderHTML();
 };
-
 pwd.AppWindow.prototype.renderHTML         = function() {
     console.log("writing HTML");
     var base = this;
@@ -84,7 +81,6 @@ pwd.AppWindow.prototype.renderHTML         = function() {
 //append main div to desktop
     document.querySelector("#desktop").appendChild( base.windowDiv);
 };
-
 pwd.AppWindow.prototype.focusAppWindow        = function(){
     var allApps = document.querySelectorAll(".application");
     for(var i = 0; i < allApps.length; i++){
