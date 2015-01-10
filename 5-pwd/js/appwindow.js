@@ -55,7 +55,7 @@ pwd.AppWindow.prototype.renderHTML = function() {
     closeWindowButton.setAttribute("alt", "a small cross");
     closeWindowButton.className="closeWindowIcon";
     closingLink.onclick= function(){
-        base.closeGallery();
+        base.closeWindow();
         return false;
     };
 //append close-img to a href
@@ -77,9 +77,12 @@ pwd.AppWindow.prototype.renderHTML = function() {
 };
 
 pwd.AppWindow.prototype.setLoadStatus = function(status){
-    var base = this;    // Vart pekar "this?" pwd.Gallery.prototype.renderGallery?? requestGallery.onreadystatechange??
+    /*var base = this;    // Vart pekar "this?" pwd.Gallery.prototype.renderGallery?? requestGallery.onreadystatechange??
     console.log(this);
     base.bottomBar.appendChild(status);
+    */
+    var bottom = document.getElementById("bottomDiv");
+    bottom.appendChild(status);
     console.log(status);
 };
 
@@ -97,4 +100,11 @@ pwd.AppWindow.prototype.focusAppWindow  = function(){
         allApps[i].style.zIndex = "1";
     }
     this.style.zIndex = "5";
+};
+
+
+
+pwd.AppWindow.prototype.closeWindow = function(){
+    var base = this;
+    base.windowDiv.parentNode.removeChild(base.windowDiv);
 };
