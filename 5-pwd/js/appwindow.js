@@ -6,6 +6,7 @@ pwd.AppWindow = function(){ //konstruktor
     this.appTitle = undefined;
     this.contentDiv = undefined;
     this.windowDiv = undefined;
+    this.bottomBar = undefined;
     this.x = undefined;
     this.y = undefined;
 };
@@ -29,9 +30,9 @@ pwd.AppWindow.prototype.renderHTML = function() {
     base.contentDiv=document.createElement("div");
     base.contentDiv.className="contentDiv";
 //Skapa div för bottom-bar
-    var bottomBar = document.createElement("div");
-    bottomBar.className="bottomBar";
-    bottomBar.id="bottomDiv";
+    base.bottomBar = document.createElement("div");
+    base.bottomBar.className="bottomBar";
+    base.bottomBar.id="bottomDiv";
 //Skapa div för top-bar
     var topBar = document.createElement("div");
     topBar.className="topBar";
@@ -70,21 +71,23 @@ pwd.AppWindow.prototype.renderHTML = function() {
 //append galleryDiv to main div
     base.windowDiv.appendChild(base.contentDiv);
 //append bottom-bar to main div
-    base.windowDiv.appendChild(bottomBar);
+    base.windowDiv.appendChild(base.bottomBar);
 //append main div to desktop
     document.querySelector("#desktop").appendChild( base.windowDiv);
 };
 
-pwd.AppWindow.prototype.windowStatus = function(bottomDiv, status, deleteDiv){
-    if(deleteDiv == false){
-        bottomDiv.appendChild(status);
-        console.log(status);
-    }
-   else{
-       var item = document.getElementById("load");
-        console.log(item);
-        item.parentNode.removeChild(item);
-    }
+pwd.AppWindow.prototype.setLoadStatus = function(status){
+    var base = this;    // Vart pekar "this?" pwd.Gallery.prototype.renderGallery?? requestGallery.onreadystatechange??
+    console.log(this);
+    base.bottomBar.appendChild(status);
+    console.log(status);
+};
+
+pwd.AppWindow.prototype.removeLoadstatus = function(){
+    var item = document.getElementById("load");
+    console.log(item);
+    item.parentNode.removeChild(item);
+    console.log("loadingbar removed");
 };
 
 
