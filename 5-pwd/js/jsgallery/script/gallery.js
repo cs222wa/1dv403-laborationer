@@ -25,7 +25,6 @@ PWD.GalleryImage.prototype.renderImage = function(){
     bigImage.setAttribute("src", base.URL);
     bigImage.setAttribute("alt","Larger Image");
     bigImage.className="bigImage";
-
     base.contentDiv.appendChild(bigImage);
     console.log(bigImage);
 };
@@ -45,7 +44,7 @@ PWD.Gallery.prototype.renderGallery=function(){
         base.setLoadStatus(loadingImg);
         if(requestGallery.readyState==4){
             if (requestGallery.status==200){
-                console.log(requestGallery.responseText);
+               // console.log(requestGallery.responseText);
                 var data = JSON.parse(requestGallery.responseText);
                 data.forEach(function(image){
                     //create thumbBox
