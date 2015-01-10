@@ -6,11 +6,10 @@ pwd.AppWindow = function(){ //konstruktor
     this.appTitle = undefined;
     this.contentDiv = undefined;
     this.windowDiv = undefined;
-    this.galleryLoading = undefined;
     this.x = undefined;
     this.y = undefined;
 };
-pwd.AppWindow.prototype.WindowConstructor    = function(icon, title, x, y){ //konstruktor 2
+pwd.AppWindow.prototype.WindowConstructor = function(icon, title, x, y){ //konstruktor 2
     //initera egneskaperna från första konstruktorn  this.egenskap = egenskap;
     this.appIcon = icon;
     this.appTitle = title;
@@ -18,7 +17,7 @@ pwd.AppWindow.prototype.WindowConstructor    = function(icon, title, x, y){ //ko
     this.y = y;
     this.renderHTML();
 };
-pwd.AppWindow.prototype.renderHTML         = function() {
+pwd.AppWindow.prototype.renderHTML = function() {
     console.log("writing HTML");
     var base = this;
 //Skapa main div
@@ -32,11 +31,7 @@ pwd.AppWindow.prototype.renderHTML         = function() {
 //Skapa div för bottom-bar
     var bottomBar = document.createElement("div");
     bottomBar.className="bottomBar";
-//skapa loading-gif
-    base.loadingImg = document.createElement("img");
-    base.loadingImg.setAttribute("src", "js/jsgallery/img/loading.gif");
-    base.loadingImg.setAttribute("alt", "Loading bar");
-    base.loadingImg.className="loadingBar";
+    bottomBar.id="bottomDiv";
 //Skapa div för top-bar
     var topBar = document.createElement("div");
     topBar.className="topBar";
@@ -74,14 +69,26 @@ pwd.AppWindow.prototype.renderHTML         = function() {
     base.windowDiv.appendChild(topBar);
 //append galleryDiv to main div
     base.windowDiv.appendChild(base.contentDiv);
-//append loading-gif to bottom-bar
-    bottomBar.appendChild(base.loadingImg);
 //append bottom-bar to main div
     base.windowDiv.appendChild(bottomBar);
 //append main div to desktop
     document.querySelector("#desktop").appendChild( base.windowDiv);
 };
-pwd.AppWindow.prototype.focusAppWindow        = function(){
+
+pwd.AppWindow.prototype.windowStatus = function(bottomDiv, status, deleteDiv){
+    if(deleteDiv == false){
+        bottomDiv.appendChild(status);
+        console.log(status);
+    }
+   else{
+       var item = document.getElementById("load");
+        console.log(item);
+        item.parentNode.removeChild(item);
+    }
+};
+
+
+pwd.AppWindow.prototype.focusAppWindow  = function(){
     var allApps = document.querySelectorAll(".application");
     for(var i = 0; i < allApps.length; i++){
         allApps[i].style.zIndex = "1";
