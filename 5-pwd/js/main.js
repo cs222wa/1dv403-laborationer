@@ -5,7 +5,6 @@ PWD.Main = {
     appCounterX: 0,
     calcX : function(countApps){
         var maxWidth = window.innerWidth-600;
-        //console.log("bredd: " + (maxWidth / (countApps*30)));
         if((maxWidth / (countApps*30)) >= 1){
             return (countApps*30)+25;
         }
@@ -15,7 +14,6 @@ PWD.Main = {
     },
     calcY : function(countApps){
         var maxHeight = window.innerHeight-600;
-       // console.log("höjd: "+ (maxHeight / (countApps*30)));
         if((maxHeight / (countApps*30)) >= 1){
             return (countApps*30)+50;
         }

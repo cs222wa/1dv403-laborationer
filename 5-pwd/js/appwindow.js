@@ -30,11 +30,11 @@ PWD.AppWindow.prototype.renderHTML = function() {
     base.windowDiv.style.left=base.x+"px";
     base.windowDiv.style.width = base.imgWidth || 550+"px";
     base.windowDiv.style.height = base.imgHeight|| 500+"px";
-    //base.windowDiv.style.zIndex = 200;
+    base.focusAppWindow.call(base.windowDiv);
+    base.windowDiv.onmousedown= base.focusAppWindow;
 //Skapa div för gallery div
     base.contentDiv=document.createElement("div");
     base.contentDiv.className="contentDiv";
-    base.contentDiv.onmousedown= base.focusAppWindow;
 //Skapa div för bottom-bar
     base.bottomBar = document.createElement("div");
     base.bottomBar.className="bottomBar";
@@ -105,9 +105,9 @@ PWD.AppWindow.prototype.removeLoadstatus = function(){
 PWD.AppWindow.prototype.focusAppWindow  = function(){
     var applications = document.querySelectorAll(".appWindow");
     for(var i = 0; i < applications.length; i++){
-        applications[i].style.zIndex = 100;
+        applications[i].style.zIndex = 1;
     }
-    this.style.zIndex = 300;
+    this.style.zIndex = 5;
 };
 
 PWD.AppWindow.prototype.closeWindow = function(){
