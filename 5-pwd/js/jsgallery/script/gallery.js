@@ -9,11 +9,10 @@ PWD.Gallery = function(x, y){
 };
 
 
-PWD.GalleryImage = function(x, y, imgURL){
-    this.WindowConstructor("img/desktop/bsgalleryicon.png", "", x, y);
+PWD.GalleryImage = function(x, y, imgURL, imageWidth, imageHeight){
+    this.WindowConstructor("img/desktop/bsgalleryicon.png", "", x, y, imageWidth, imageHeight);
     this.desktop = document.getElementById("desktop");
     this.URL = imgURL;
-    console.log(imgURL);
     this.renderImage();
 };
 
@@ -44,7 +43,7 @@ PWD.Gallery.prototype.renderGallery=function(){
         base.setLoadStatus(loadingImg);
         if(requestGallery.readyState==4){
             if (requestGallery.status==200){
-               // console.log(requestGallery.responseText);
+               console.log(requestGallery.responseText);
                 var data = JSON.parse(requestGallery.responseText);
                 data.forEach(function(image){
                     //create thumbBox
@@ -61,7 +60,7 @@ PWD.Gallery.prototype.renderGallery=function(){
                     bgLink.setAttribute("href", "#");
                     bgLink.id="imageLink";
                     bgLink.onclick = function(){
-                        new PWD.GalleryImage(PWD.Main.calcX(PWD.Main.appCounterX), PWD.Main.calcY(PWD.Main.appCounterY),image.URL);
+                        new PWD.GalleryImage(PWD.Main.calcX(PWD.Main.appCounterX), PWD.Main.calcY(PWD.Main.appCounterY),image.URL, image.width, image.height);
                         console.log(image.URL);
                         PWD.Main.appCounterY++;
                         PWD.Main.appCounterX++;

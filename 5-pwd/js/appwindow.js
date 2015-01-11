@@ -10,12 +10,14 @@ PWD.AppWindow = function(){ //konstruktor
     this.x = undefined;
     this.y = undefined;
 };
-PWD.AppWindow.prototype.WindowConstructor = function(icon, title, x, y){ //konstruktor 2
+PWD.AppWindow.prototype.WindowConstructor = function(icon, title, x, y, imageWidth, imageHeight){ //konstruktor 2
     //initera egneskaperna från första konstruktorn  this.egenskap = egenskap;
     this.appIcon = icon;
     this.appTitle = title;
     this.x = x;
     this.y = y;
+    this.imgWidth = imageWidth;
+    this.imgHeight = imageHeight;
     this.renderHTML();
 };
 PWD.AppWindow.prototype.renderHTML = function() {
@@ -26,6 +28,8 @@ PWD.AppWindow.prototype.renderHTML = function() {
     base.windowDiv.className="appWindow";
     base.windowDiv.style.top=base.y+"px";
     base.windowDiv.style.left=base.x+"px";
+    base.windowDiv.style.width = base.imgWidth || 550+"px";
+    base.windowDiv.style.height = base.imgHeight|| 500+"px";
 //Skapa div för gallery div
     base.contentDiv=document.createElement("div");
     base.contentDiv.className="contentDiv";

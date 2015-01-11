@@ -11,8 +11,6 @@
     margin: auto;
     background-color: black;
     overflow: hidden;
-    overflow-x: auto;
-    overflow-y: auto;
 }
 
 #iconTray{
@@ -32,8 +30,6 @@
 /*Application Windows*/
 
 .appWindow{
-    width: 550px;
-    height: 500px;
     background-color: white;
     left: 100px;
     top: 100px;
