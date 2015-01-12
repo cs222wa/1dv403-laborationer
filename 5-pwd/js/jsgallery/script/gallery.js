@@ -43,7 +43,7 @@ PWD.Gallery.prototype.renderGallery=function(){
         base.setLoadStatus(loadingImg);
         if(requestGallery.readyState==4){
             if (requestGallery.status==200){
-               console.log(requestGallery.responseText);
+               //console.log(requestGallery.responseText);
                 var data = JSON.parse(requestGallery.responseText);
                 data.forEach(function(image){
                     //create thumbBox

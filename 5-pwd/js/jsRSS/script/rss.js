@@ -13,6 +13,7 @@ PWD.RSS.prototype = new PWD.AppWindow();
 PWD.RSS.constructor = PWD.RSS;
 PWD.RSS.prototype.getRSS=function(){
     var base = this;
+    base.setLoadStatus(loadingImg);
     var handleResponse = function(response){
         var article = document.createElement("article");
         article.innerHTML=response;
@@ -27,4 +28,13 @@ PWD.RSS.prototype.getRSS=function(){
 PWD.RSS.prototype.renderResponse = function(code){
     var base = this;
     base.contentDiv.appendChild(code);
+    base.removeLoadstatus();
 };
+
+
+
+var loadingImg = document.createElement("img");
+loadingImg.setAttribute("src", "img/loading.gif");
+loadingImg.setAttribute("alt", "Loading bar");
+loadingImg.className="loadingBar";
+loadingImg.id="load";

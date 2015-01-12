@@ -82,15 +82,7 @@ PWD.AppWindow.prototype.renderHTML = function() {
 };
 
 PWD.AppWindow.prototype.setLoadStatus = function(status){
-    /*var base = this;    // Vart pekar "this?" PWD.Gallery.prototype.renderGallery?? requestGallery.onreadystatechange??
-    console.log(this);
-    base.bottomBar.appendChild(status);
-    */
     this.bottomBar.appendChild(status);
-
-    //var bottom = document.getElementById("bottomDiv");
-   // bottom.appendChild(status);
-   // console.log(status);
 };
 
 PWD.AppWindow.prototype.removeLoadstatus = function(){

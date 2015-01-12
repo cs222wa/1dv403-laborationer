@@ -12,14 +12,8 @@ PWD.AjaxReq = function(url, posttype, handler){
 
 PWD.AjaxReq.prototype.getAjaxReq = function(){
     var base = this;
-    var loadingImg = document.createElement("img");
-    loadingImg.setAttribute("src", "img/loading.gif");
-    loadingImg.setAttribute("alt", "Loading bar");
-    loadingImg.className="loadingBar";
-    loadingImg.id="load";
     base.request = new XMLHttpRequest();
     base.request.onreadystatechange = function(){
-        //   base.setLoadStatus(loadingImg);
         if(base.request.readyState === 4){
             if(base.request.status == 200){
                var response = base.request.responseText;//console.log(base.request.responseText);
@@ -28,7 +22,6 @@ PWD.AjaxReq.prototype.getAjaxReq = function(){
             else{
                 console.log("Läsfel, status: " + base.request.status);
             }
-          //  base.removeLoadstatus();
         }
     };
     if(base.posttype === "GET"){
