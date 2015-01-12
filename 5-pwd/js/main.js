@@ -55,6 +55,14 @@ PWD.Main = {
             PWD.Main.appCounterX++;
             return false
         };
+        document.getElementById("memorylink").onclick=function() {
+            var headerTitle = "Memory";
+            var icon = "img/desktop/bsmemoryicon.png";
+            new PWD.MemoryGame(PWD.Main.calcX(PWD.Main.appCounterX), PWD.Main.calcY(PWD.Main.appCounterY), headerTitle, icon); //fönster-förskjutning baserat på antalet fönster.
+            PWD.Main.appCounterY++;
+            PWD.Main.appCounterX++;
+            return false
+        };
     }
 };
 window.onload = PWD.Main.init;
