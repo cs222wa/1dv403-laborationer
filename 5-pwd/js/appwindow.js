@@ -21,7 +21,6 @@ PWD.AppWindow.prototype.WindowConstructor = function(icon, title, x, y, imageWid
     this.renderHTML();
 };
 PWD.AppWindow.prototype.renderHTML = function() {
-    console.log("writing HTML");
     var base = this;
 //Skapa main div
     base.windowDiv = document.createElement("div");

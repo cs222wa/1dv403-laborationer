@@ -28,13 +28,33 @@ PWD.Main = {
             PWD.Main.appCounterX++;
             return false
         };
-        document.getElementById("rsslink").onclick=function(){
-            console.log(PWD.RSS);
-            new PWD.RSS(PWD.Main.calcX(PWD.Main.appCounterX), PWD.Main.calcY(PWD.Main.appCounterY)); //fönster-förskjutning baserat på antalet fönster.
+        document.getElementById("newslink").onclick=function(){
+            var headerTitle = "Nyheter - Sverige";
+            var feedUrl= "http://www.dn.se/nyheter/sverige/m/rss";
+            var icon = "img/desktop/bsrssnewsicon.png";
+            new PWD.RSS(PWD.Main.calcX(PWD.Main.appCounterX), PWD.Main.calcY(PWD.Main.appCounterY), headerTitle, icon, feedUrl); //fönster-förskjutning baserat på antalet fönster.
             PWD.Main.appCounterY++;
             PWD.Main.appCounterX++;
             return false
-        }
+        };
+        document.getElementById("culturelink").onclick=function() {
+            var headerTitle = "Kultur och Nöje";
+            var feedUrl = "http://www.dn.se/kultur-noje/m/rss";
+            var icon = "img/desktop/bsrsscultureicon.png";
+            new PWD.RSS(PWD.Main.calcX(PWD.Main.appCounterX), PWD.Main.calcY(PWD.Main.appCounterY), headerTitle, icon, feedUrl); //fönster-förskjutning baserat på antalet fönster.
+            PWD.Main.appCounterY++;
+            PWD.Main.appCounterX++;
+            return false
+        };
+        document.getElementById("sportslink").onclick=function() {
+            var headerTitle = "Sport";
+            var feedUrl = "http://www.dn.se/sport/m/rss";
+            var icon = "img/desktop/bsrsssporticon.png";
+            new PWD.RSS(PWD.Main.calcX(PWD.Main.appCounterX), PWD.Main.calcY(PWD.Main.appCounterY), headerTitle, icon, feedUrl); //fönster-förskjutning baserat på antalet fönster.
+            PWD.Main.appCounterY++;
+            PWD.Main.appCounterX++;
+            return false
+        };
     }
 };
 window.onload = PWD.Main.init;
