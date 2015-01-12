@@ -22,6 +22,10 @@ PWD.Coloring.prototype.renderCanvas=function(){
     }
     var context = base.canvas.getContext("2d");
     var paint = false;
+    var radius = 0;
+    var smallSize;
+    var normalSize;
+    var bigSize;
     var curSize = "normal";
     var clickSize = [];
     var clickX = [];
@@ -97,13 +101,115 @@ PWD.Coloring.prototype.renderCanvas=function(){
         clickSize.push(curSize);
     }
 
+
+    renderTools();
+    function renderTools(){
+
+        var toolsDiv = document.createElement("div");
+        var colorSwatches = document.createElement("div");
+        var drawingTools = document.createElement("div");
+
+        var darkBlue = document.createElement("img");
+        darkBlue.src = "js/jscoloring/img/swatches/darkblue.jpg";
+        darkBlue.alt ="Dark blue";
+        var lightBlue = document.createElement("img");
+        lightBlue.src = "js/jscoloring/img/swatches/lightblue.jpg";
+        lightBlue.alt="Light blue";
+        var lightGreen = document.createElement("img");
+        lightGreen.src = "js/jscoloring/img/swatches/lightgreen.jpg";
+        lightGreen.alt="Light green";
+        var darkGreen = document.createElement("img");
+        darkGreen.src = "js/jscoloring/img/swatches/darkgreen.jpg";
+        darkGreen.alt="Dark green";
+        var yellow = document.createElement("img");
+        yellow.src = "js/jscoloring/img/swatches/yellow.jpg";
+        yellow.alt="Yellow";
+        var darkRed = document.createElement("img");
+        darkRed.src = "js/jscoloring/img/swatches/darkred.jpg";
+        darkRed.alt="Dark red";
+        var red = document.createElement("img");
+        red.src = "js/jscoloring/img/swatches/red.jpg";
+        red.alt="Red";
+        var orange = document.createElement("img");
+        orange.src = "js/jscoloring/img/swatches/orange.jpg";
+        orange.alt="Orange";
+        var purple = document.createElement("img");
+        purple.src = "js/jscoloring/img/swatches/purple.jpg";
+        purple.alt ="Purple";
+        var magenta = document.createElement("img");
+        magenta.src = "js/jscoloring/img/swatches/magenta.jpg";
+        magenta.alt ="Magenta";
+        var pink = document.createElement("img");
+        pink.src = "js/jscoloring/img/swatches/pink.jpg";
+        pink.alt = "Pink";
+        var beige  = document.createElement("img");
+        beige.src = "js/jscoloring/img/swatches/beige.jpg";
+        beige.alt ="Beige";
+        var lightGrey = document.createElement("img");
+        lightGrey.src = "js/jscoloring/img/swatches/lightgrey.jpg";
+        lightGrey.alt = "Light Grey";
+        var darkGrey = document.createElement("img");
+        darkGrey.src = "js/jscoloring/img/swatches/darkgrey.jpg";
+        darkGrey.alt ="Dark grey";
+        var white = document.createElement("img");
+        white.src = "js/jscoloring/img/swatches/white.jpg";
+        white.alt = "White";
+        var black = document.createElement("img");
+        black.src = "js/jscoloring/img/swatches/black.jpg";
+        black.alt ="Black";
+        var darkBrown = document.createElement("img");
+        darkBrown.src = "js/jscoloring/img/swatches/darkbrown.jpg";
+        darkBrown.alt="Dark brown";
+        var lightBrown = document.createElement("img");
+        lightBrown.src = "js/jscoloring/img/swatches/lightbrown.jpg";
+        lightBrown.alt = "Light brown";
+
+
+        smallSize = document.createElement("img");
+        normalSize = document.createElement("img");
+        bigSize = document.createElement("img");
+        var sizes = [smallSize, normalSize, bigSize];
+        sizes.forEach(function(size){
+            document.createElement("img");
+            size.src="js/jscoloring/img/pensize.png"
+        });
+
+        smallSize.alt="Small sized drawing tool";
+        normalSize.alt ="Medium sized drawing tool";
+        bigSize.alt = "Big sized drawing tool";
+
+        smallSize.onclick = function(){
+            console.log("small size");
+            radius = 5;
+        };
+        normalSize.onclick = function(){
+            console.log("normal size");
+            radius = 15;
+        };
+        bigSize.onclick = function(){
+            console.log("big size");
+            radius = 30;
+        };
+
+
+
+        //create one img for erasor - onclick sets color of pen to same color as background.
+        //create one img for pen - onclick sets color to default color
+        //create one div for each elemnt in "pens" - sizes: name them small, normal, large. erazer and pen.
+        //append each element to correct div. with correct onclick-functions attached to them
+        //append divs to "pens"-div.
+        //append colors to div "swatches"
+        //append "swatches" and "pens" to "tools"-div.
+        //append "tools" after "canvas" in "contentDiv".
+    }
+
     //this function saves and redraws all the information that has been "drawn" on the canvas
     //each time the function is called.
     function redraw(){
         context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
        /* context.strokeStyle = "#df4b26"; */
         context.lineJoin = "round";
-        context.lineWidth = 20;
+        context.lineWidth = normalSize.onclick();
         for(var i=0; i < clickX.length; i++) {
             context.beginPath();
             if(clickDrag[i] && i){
@@ -115,27 +221,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
             context.closePath();
             context.strokeStyle = clickColor[i];
             context.stroke();
-            //context.lineWidth = radius;   //radius is not defined
+            context.lineWidth = radius;
             context.drawImage(outline, 0, 0, 780, 513);
             }
-    }
-
-
-
-
-    function renderTools(){
-        //create div "Tools"
-        //create div "swatches"
-        //create div "pens"
-        //create img-element for each color (18);
-        //create img-elements for sizes - each onclick on the buttons sets a different value to the variable (radius)
-        //create one img for erasor - onclick sets color of pen to same color as background.
-        //create one img for pen - onclick sets color to default color
-        //create one div for each elemnt in "pens" - sizes: name them small, normal, large. erazer and pen.
-        //append each element to correct div. with correct onclick-functions attached to them
-        //append divs to "pens"-div.
-        //append colors to div "swatches"
-        //append "swatches" and "pens" to "tools"-div.
-        //append "tools" after "canvas" in "contentDiv".
     }
 };
