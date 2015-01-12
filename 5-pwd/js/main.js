@@ -63,6 +63,14 @@ PWD.Main = {
             PWD.Main.appCounterX++;
             return false
         };
+        document.getElementById("coloringlink").onclick=function() {
+            var headerTitle = "Målarbok";
+            var icon = "img/desktop/bscoloringicon.png";
+            new PWD.Coloring(PWD.Main.calcX(PWD.Main.appCounterX), PWD.Main.calcY(PWD.Main.appCounterY), headerTitle, icon); //fönster-förskjutning baserat på antalet fönster.
+            PWD.Main.appCounterY++;
+            PWD.Main.appCounterX++;
+            return false
+        };
     }
 };
 window.onload = PWD.Main.init;
