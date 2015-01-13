@@ -28,7 +28,6 @@ PWD.Coloring.prototype.renderCanvas=function(){
     var context = base.canvas.getContext("2d");
 
     var paint = false;
-    var radius = 0;
     var curSize = "normal";
     var clickSize = [];
     var clickX = [];
@@ -55,9 +54,9 @@ PWD.Coloring.prototype.renderCanvas=function(){
     var colorDarkBrown = "#4f2a0a";     //16
     var colorLightBrown = "#bb5205";    //17
 
-    var clickColor = [colorBlack, colorWhite, colorDarkBlue, colorLightBlue, colorLightGreen, colorDarkGreen, colorYellow, colorDarkRed, colorRed, colorOrange, colorPurple, colorMagenta, colorPink, colorBeige, colorLightGrey, colorDarkGrey, colorDarkBrown, colorLightBrown];
+    var clickColor = [];
     //default color
-    var curColor = colorDarkGreen;
+   var curColor = colorDarkGreen;
 
     //coloring image
     var outline = document.createElement("img");
@@ -105,8 +104,6 @@ PWD.Coloring.prototype.renderCanvas=function(){
     }
 
 
-
-
         var colorSwatches = document.createElement("div");
         colorSwatches.className = "bigColorDiv";
         var drawingTools = document.createElement("div");
@@ -118,8 +115,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         black.className = "colorswatches";
         black.onclick = function(){
         console.log("pen selected");
-        context.strokeStyle  = clickColor[0];
-        console.log(context.strokeStyle);
+        curColor = "black";
+        console.log(curColor);
         };
 
         var white = document.createElement("img");
@@ -128,7 +125,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         white.className = "colorswatches";
         white.onclick = function(){
         console.log("pen selected");
-        context.strokeStyle  = clickColor[1];
+        curColor = "white";
         console.log(context.strokeStyle);
         };
 
@@ -376,16 +373,15 @@ PWD.Coloring.prototype.renderCanvas=function(){
 
     base.smallSize.onclick = function(){
         console.log("small size");
-        radius = 5;
+        curSize = 5;
     };
     base.normalSize.onclick = function(){
         console.log("normal size");
-        radius = 15;
+        curSize = 15;
     };
     base.bigSize.onclick = function(){
         console.log("big size");
-        radius = 30;
-        redraw();
+        curSize = 30;
     };
 
     base.pen.onclick = function(){
@@ -406,7 +402,6 @@ PWD.Coloring.prototype.renderCanvas=function(){
     function redraw(){
         context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
         context.lineJoin = "round";
-        context.lineWidth = radius;
         for(var i=0; i < clickX.length; i++) {
             context.beginPath();
             if(clickDrag[i] && i){
@@ -417,8 +412,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
             context.lineTo(clickX[i], clickY[i]);
             context.closePath();
             context.strokeStyle = clickColor[i];
+            context.lineWidth = clickSize[i];
             context.stroke();
-            context.lineWidth = radius;
             }
         context.drawImage(outline, 0, 0, 780, 513);
     }
