@@ -67,7 +67,8 @@ PWD.Gallery.prototype.renderGallery=function(){
                     thumbBox.style.width = biggestThumbWidth + "px";
                     thumbBox.style.height = biggestThumbHeight + "px";
                     thumb.style.maxWidth=image.thumbWidth  + "px";
-                    thumb.style.maxHeight= image.thumbHeight  + "px";
+                    thumb.style.maxHeight=image.thumbHeight  + "px";
+                    thumb.style.marginTop = ((biggestThumbHeight-image.thumbHeight) / 2) + "px";
                     //create link for gallery images
                     var bgLink = document.createElement("a");
                     bgLink.setAttribute("href", "#");

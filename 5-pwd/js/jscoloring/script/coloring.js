@@ -56,7 +56,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
 
     var clickColor = [];
     //default color
-   var curColor = colorDarkGreen;
+   var curColor = colorBlack;
 
     //coloring image
     var outline = document.createElement("img");
@@ -113,9 +113,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         black.alt ="Black";
         black.className = "colorswatches";
         black.onclick = function(){
-        console.log("pen selected");
-        curColor = "black";
-        console.log(curColor);
+            curColor = colorBlack;
         };
 
         var white = document.createElement("img");
@@ -123,9 +121,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         white.alt = "White";
         white.className = "colorswatches";
         white.onclick = function(){
-        console.log("pen selected");
-        curColor = "white";
-        console.log(context.strokeStyle);
+            curColor = colorWhite;
         };
 
         var darkBlue = document.createElement("img");
@@ -133,9 +129,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         darkBlue.alt ="Dark blue";
         darkBlue.className = "colorswatches";
         darkBlue.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[2];
-        console.log(context.strokeStyle);
+            curColor =  colorDarkBlue;
          };
 
         var lightBlue = document.createElement("img");
@@ -143,9 +137,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         lightBlue.alt="Light blue";
         lightBlue.className = "colorswatches";
         lightBlue.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[3];
-        console.log(context.strokeStyle);
+            curColor =  colorLightBlue;
         };
 
         var lightGreen = document.createElement("img");
@@ -153,18 +145,14 @@ PWD.Coloring.prototype.renderCanvas=function(){
         lightGreen.alt="Light green";
         lightGreen.className = "colorswatches";
         lightGreen.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[4];
-        console.log(context.strokeStyle);
+            curColor =  colorLightGreen;
         };
         var darkGreen = document.createElement("img");
         darkGreen.src = "js/jscoloring/img/swatches/darkgreen.jpg";
         darkGreen.alt="Dark green";
         darkGreen.className = "colorswatches";
         darkGreen.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[5];
-        console.log(context.strokeStyle);
+            curColor =  colorDarkGreen;
         };
 
         var yellow = document.createElement("img");
@@ -172,9 +160,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         yellow.alt="Yellow";
         yellow.className = "colorswatches";
         yellow.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[6];
-        console.log(context.strokeStyle);
+            curColor =  colorYellow;
         };
 
         var darkRed = document.createElement("img");
@@ -182,9 +168,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         darkRed.alt="Dark red";
         darkRed.className = "colorswatches";
         darkRed.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[7];
-        console.log(context.strokeStyle);
+            curColor =  colorDarkRed;
         };
 
         var red = document.createElement("img");
@@ -192,9 +176,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         red.alt="Red";
         red.className = "colorswatches";
         red.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[8];
-        console.log(context.strokeStyle);
+            curColor =  colorRed;
         };
 
         var orange = document.createElement("img");
@@ -202,9 +184,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         orange.alt="Orange";
         orange.className = "colorswatches";
         orange.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[9];
-        console.log(context.strokeStyle);
+            curColor =  colorOrange;
         };
 
         var purple = document.createElement("img");
@@ -212,9 +192,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         purple.alt ="Purple";
         purple.className = "colorswatches";
         purple.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[10];
-        console.log(context.strokeStyle);
+            curColor =  colorPurple;
         };
 
         var magenta = document.createElement("img");
@@ -222,9 +200,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         magenta.alt ="Magenta";
         magenta.className = "colorswatches";
         magenta.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[11];
-        console.log(context.strokeStyle);
+            curColor =  colorMagenta;
         };
 
         var pink = document.createElement("img");
@@ -232,18 +208,14 @@ PWD.Coloring.prototype.renderCanvas=function(){
         pink.alt = "Pink";
         pink.className = "colorswatches";
         pink.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[12];
-        console.log(context.strokeStyle);
+            curColor =  colorPink;
         };
         var beige  = document.createElement("img");
         beige.src = "js/jscoloring/img/swatches/beige.jpg";
         beige.alt ="Beige";
         beige.className = "colorswatches";
         beige.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[13];
-        console.log(context.strokeStyle);
+            curColor =  colorBeige;
         };
 
         var lightGrey = document.createElement("img");
@@ -251,9 +223,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         lightGrey.alt = "Light Grey";
         lightGrey.className = "colorswatches";
         lightGrey.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[14];
-        console.log(context.strokeStyle);
+            curColor =  colorLightGrey;
         };
 
         var darkGrey = document.createElement("img");
@@ -261,9 +231,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         darkGrey.alt ="Dark grey";
         darkGrey.className = "colorswatches";
         darkGrey.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[15];
-        console.log(context.strokeStyle);
+            curColor =  colorDarkGrey;
         };
 
         var darkBrown = document.createElement("img");
@@ -271,9 +239,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         darkBrown.alt="Dark brown";
         darkBrown.className = "colorswatches";
         darkBrown.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[16];
-        console.log(context.strokeStyle);
+            curColor =  colorDarkBrown;
         };
 
         var lightBrown = document.createElement("img");
@@ -281,9 +247,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         lightBrown.alt = "Light brown";
         lightBrown.className = "colorswatches";
         lightBrown.onclick = function(){
-        console.log("pen selected");
-        context.strokeStyle  = clickColor[17];
-        console.log(context.strokeStyle);
+            curColor =  colorLightBrown;
         };
 
 
@@ -382,17 +346,24 @@ PWD.Coloring.prototype.renderCanvas=function(){
         console.log("big size");
         curSize = 30;
     };
-
+    var lastColor;
     base.pen.onclick = function(){
+        if(lastColor == colorWhite){
+            curColor = colorBlack;
+        }
+        else if(lastColor){
+            curColor = lastColor;
+        }
+        else{
+            curColor =  colorBlack;
+        }
         console.log("pen selected");
-        context.strokeStyle  = clickColor[0];
-        console.log(context.strokeStyle);
     };
 
     base.eraser.onclick = function(){
+        lastColor = curColor;
         console.log("eraser selected");
-        context.strokeStyle = clickColor[1];
-        console.log(context.strokeStyle);
+        curColor =  colorWhite;
     };
 
 
