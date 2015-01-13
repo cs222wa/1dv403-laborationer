@@ -385,6 +385,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
     base.bigSize.onclick = function(){
         console.log("big size");
         radius = 30;
+        redraw();
     };
 
     base.pen.onclick = function(){
@@ -404,7 +405,6 @@ PWD.Coloring.prototype.renderCanvas=function(){
     //each time the function is called.
     function redraw(){
         context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
-        context.drawImage(outline, 0, 0, 780, 513);
         context.lineJoin = "round";
         context.lineWidth = radius;
         for(var i=0; i < clickX.length; i++) {
@@ -420,6 +420,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
             context.stroke();
             context.lineWidth = radius;
             }
+        context.drawImage(outline, 0, 0, 780, 513);
     }
 };
 
