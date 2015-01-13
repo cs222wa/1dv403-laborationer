@@ -19,8 +19,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
     var base = this;
     base.canvas = document.createElement("canvas");
     base.canvas.className="canvas";
-    base.canvas.setAttribute('width', "780px");
-    base.canvas.setAttribute('height', "513px");
+    base.canvas.setAttribute('width', "763px");
+    base.canvas.setAttribute('height', "492px");
     base.contentDiv.appendChild(base.canvas);
     if(typeof G_vmlCanvasManager != 'undefined') {
         base.canvas = G_vmlCanvasManager.initElement(base.canvas);
@@ -28,7 +28,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
     var context = base.canvas.getContext("2d");
 
     var paint = false;
-    var curSize = "normal";
+    var curSize = 15;
     var clickSize = [];
     var clickX = [];
     var clickY = [];
@@ -65,7 +65,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
     outline.className = "coloringImage";
 
     //draw outline image on the canvas
-    context.drawImage(outline, 0, 0, 780, 513);
+    context.drawImage(outline, 0, 0, 763, 492);
 
     //When mousebutton is pressed down - the function finds the mouse's coordinates and calls the appropriate functions.
     base.canvas.onmousedown=function(e){
@@ -73,14 +73,14 @@ PWD.Coloring.prototype.renderCanvas=function(){
         var mouseX = e.pageX - this.offsetLeft;
         var mouseY = e.pageY - this.offsetTop;
         paint = true;
-        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+        addClick(e.pageX - this.getBoundingClientRect().left, e.pageY - this.getBoundingClientRect().top);
         redraw();
     };
     //When mousebutton is moved the function traces the mouse's coordinates and calls the appropriate functions..
     base.canvas.onmousemove=function(e){
         console.log("on mouse move");
         if(paint){
-            addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+            addClick(e.pageX - this.getBoundingClientRect().left, e.pageY - this.getBoundingClientRect().top, true);
             redraw();
         }
     };
@@ -102,7 +102,6 @@ PWD.Coloring.prototype.renderCanvas=function(){
         clickColor.push(curColor);
         clickSize.push(curSize);
     }
-
 
         var colorSwatches = document.createElement("div");
         colorSwatches.className = "bigColorDiv";
@@ -415,11 +414,9 @@ PWD.Coloring.prototype.renderCanvas=function(){
             context.lineWidth = clickSize[i];
             context.stroke();
             }
-        context.drawImage(outline, 0, 0, 780, 513);
+        context.drawImage(outline, 0, 0, 763, 492);
     }
 };
-
-
 
 //Place a-tags around images ?
 //create basic CSS to avoid scrolling

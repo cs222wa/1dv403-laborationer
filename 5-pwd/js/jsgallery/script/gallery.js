@@ -43,8 +43,19 @@ PWD.Gallery.prototype.renderGallery=function(){
         base.setLoadStatus(loadingImg);
         if(requestGallery.readyState==4){
             if (requestGallery.status==200){
-               //console.log(requestGallery.responseText);
+               console.log(requestGallery.responseText);
                 var data = JSON.parse(requestGallery.responseText);
+                var biggestThumbWidth = 0;
+                var biggestThumbHeight = 0;
+                data.forEach(function(thumb){
+                        if(thumb.thumbHeight > biggestThumbHeight){
+                            biggestThumbHeight = thumb.thumbHeight;
+                        }
+                    if(thumb.thumbWidth > biggestThumbWidth){
+                        biggestThumbWidth = thumb.thumbWidth;
+                    }
+                });
+
                 data.forEach(function(image){
                     //create thumbBox
                     var thumbBox = document.createElement("div");
@@ -53,8 +64,10 @@ PWD.Gallery.prototype.renderGallery=function(){
                     var thumb = document.createElement("img");
                     thumb.setAttribute("src", image.thumbURL);
                     thumb.setAttribute("alt", "thumbnail");
-                    thumb.style.maxWidth=image.thumbWidth;
-                    thumb.style.maxHeight= image.thumbHeight;
+                    thumbBox.style.width = biggestThumbWidth + "px";
+                    thumbBox.style.height = biggestThumbHeight + "px";
+                    thumb.style.maxWidth=image.thumbWidth  + "px";
+                    thumb.style.maxHeight= image.thumbHeight  + "px";
                     //create link for gallery images
                     var bgLink = document.createElement("a");
                     bgLink.setAttribute("href", "#");
