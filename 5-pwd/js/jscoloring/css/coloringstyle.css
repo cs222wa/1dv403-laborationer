@@ -1,14 +1,4 @@
-.canvas{
-    width:100%;
-    height: 80%;
-    background-color: beige;
-}
-
-.coloringImage{
-    width: 100%;
-    height: auto;
-}
-
+/*
 .colors{
     color: #1a1a76;
     color: #87CEFA;
@@ -28,4 +18,57 @@
     color: #000000;
     color: #4f2a0a;
     color: #bb5205;
+}
+*/
+
+.canvas{
+    width:100%;
+    height: 80%;
+    background-color: white;
+    margin-bottom: 15px;
+}
+
+.coloringImage{
+    width: 100%;
+    height: auto;
+}
+
+.bigColorDiv{
+    width: 40%;
+    margin-left: 70px;
+    float: left;
+}
+
+.bigToolDiv{
+    width: 45%;
+    margin-top: 20px;
+    margin-right: 0;
+    float: right;
+}
+
+.tooldivs{
+    display: inline-block;
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.smalltool{
+    width: 20px;
+    height: auto;
+}
+
+.mediumtool {
+    width: 35px;
+    height: auto;
+}
+
+.tool{
+    width: 50px;
+    height: auto;
+}
+
+.colorswatches{
+    width: 30px;
+    height: auto;
+    margin: 1px;
 }
