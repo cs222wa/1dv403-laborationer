@@ -24,6 +24,7 @@ PWD.GalleryImage.prototype.renderImage = function(){
     bigImage.setAttribute("src", base.URL);
     bigImage.setAttribute("alt","Larger Image");
     bigImage.className="bigImage";
+    base.bottomBar.parentNode.removeChild(base.bottomBar);
     base.contentDiv.appendChild(bigImage);
     console.log(bigImage);
 };
@@ -55,7 +56,6 @@ PWD.Gallery.prototype.renderGallery=function(){
                         biggestThumbWidth = thumb.thumbWidth;
                     }
                 });
-
                 data.forEach(function(image){
                     //create thumbBox
                     var thumbBox = document.createElement("div");
@@ -88,8 +88,6 @@ PWD.Gallery.prototype.renderGallery=function(){
                         }
                         return false
                 };
-
-
                     //append thumb to bgLink
                     bgLink.appendChild(thumb);
                     //append bgLink to thumbBox
