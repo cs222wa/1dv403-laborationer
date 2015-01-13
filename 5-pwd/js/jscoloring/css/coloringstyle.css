@@ -35,14 +35,14 @@
 
 .bigColorDiv{
     width: 40%;
-    margin-left: 10px;
+    margin-left: 5px;
     float: left;
 }
 
 .bigToolDiv{
-    width: 40%;
+    width: 45%;
     margin-top: 20px;
-    margin-right: 0;
+    margin-right: 10px;
     float: right;
 }
 
@@ -67,6 +67,10 @@
     height: auto;
 }
 
+.clearButton{
+margin-left: 5px;
+}
+
 .colorswatches{
     width: 30px;
     height: auto;
@@ -80,7 +84,7 @@
     border-width: 1px;
     border-style: solid;
     border-color: black;
-    margin-left: 50px;
-    margin-right: 15px;
+    margin-left: 20px;
+    margin-right: 5px;
     float: left;
 }

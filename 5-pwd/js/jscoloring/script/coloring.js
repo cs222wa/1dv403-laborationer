@@ -312,12 +312,11 @@ PWD.Coloring.prototype.renderCanvas=function(){
         base.smallSize = document.createElement("img");
         base.normalSize = document.createElement("img");
         base.bigSize = document.createElement("img");
-    /*    var sizes = [base.smallSize, base.normalSize, base.bigSize];
-         sizes.forEach(function(size){
-            document.createElement("img");
-            size.src="js/jscoloring/img/pensize.png"
-        });
-    */
+
+        var clearButton = document.createElement("input");
+        clearButton.type = "button";
+        clearButton.className = "clearButton";
+        clearButton.value = "Börja om";
 
         base.smallSize.src="js/jscoloring/img/pensize.png";
         base.normalSize.src ="js/jscoloring/img/pensize.png";
@@ -342,13 +341,24 @@ PWD.Coloring.prototype.renderCanvas=function(){
         base.pen.alt = "Pen tool";
         base.pen.className = "tool";
 
+
+        clearButton.onclick = function(){
+            clickX = [];
+            clickY = [];
+            clickDrag = [];
+            clickColor = [];
+            redraw();
+        };
+
+
         var smallDiv = document.createElement("div");
         var normalDiv = document.createElement("div");
         var largeDiv = document.createElement("div");
         var eraserDiv = document.createElement("div");
         var penDiv = document.createElement("div");
+        var buttonDiv = document.createElement("div");
 
-        var tooldivs = [smallDiv, normalDiv, largeDiv, eraserDiv, penDiv];
+        var tooldivs = [smallDiv, normalDiv, largeDiv, eraserDiv, penDiv, buttonDiv];
         tooldivs.forEach(function(sizeDivs){
             sizeDivs.className = "tooldivs";
         });
@@ -359,12 +369,14 @@ PWD.Coloring.prototype.renderCanvas=function(){
         largeDiv.appendChild(base.bigSize);
         penDiv.appendChild(base.pen);
         eraserDiv.appendChild(base.eraser);
+        buttonDiv.appendChild(clearButton);
 
         drawingTools.appendChild(penDiv);
         drawingTools.appendChild(eraserDiv);
         drawingTools.appendChild(smallDiv);
         drawingTools.appendChild(normalDiv);
         drawingTools.appendChild(largeDiv);
+        drawingTools.appendChild(buttonDiv);
 
 
         base.contentDiv.appendChild(drawingTools);
