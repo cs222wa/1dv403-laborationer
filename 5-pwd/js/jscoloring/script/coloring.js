@@ -26,7 +26,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         base.canvas = G_vmlCanvasManager.initElement(base.canvas);
     }
     var context = base.canvas.getContext("2d");
-
+    var currentSwatch = document.createElement("div");
+    currentSwatch.className = "currentSwatch";
     var paint = false;
     var curSize = 15;
     var clickSize = [];
@@ -54,9 +55,11 @@ PWD.Coloring.prototype.renderCanvas=function(){
     var colorDarkBrown = "#4f2a0a";     //16
     var colorLightBrown = "#bb5205";    //17
 
+
+    currentSwatch.style.backgroundColor = colorBlack;
     var clickColor = [];
     //default color
-   var curColor = colorBlack;
+    var curColor = colorBlack;
 
     //coloring image
     var outline = document.createElement("img");
@@ -114,6 +117,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         black.className = "colorswatches";
         black.onclick = function(){
             curColor = colorBlack;
+            currentSwatch.style.backgroundColor = colorBlack;
         };
 
         var white = document.createElement("img");
@@ -122,6 +126,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         white.className = "colorswatches";
         white.onclick = function(){
             curColor = colorWhite;
+            currentSwatch.style.backgroundColor = colorWhite;
         };
 
         var darkBlue = document.createElement("img");
@@ -130,6 +135,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         darkBlue.className = "colorswatches";
         darkBlue.onclick = function(){
             curColor =  colorDarkBlue;
+            currentSwatch.style.backgroundColor = colorDarkBlue;
          };
 
         var lightBlue = document.createElement("img");
@@ -138,6 +144,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         lightBlue.className = "colorswatches";
         lightBlue.onclick = function(){
             curColor =  colorLightBlue;
+            currentSwatch.style.backgroundColor = colorLightBlue;
         };
 
         var lightGreen = document.createElement("img");
@@ -146,6 +153,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         lightGreen.className = "colorswatches";
         lightGreen.onclick = function(){
             curColor =  colorLightGreen;
+            currentSwatch.style.backgroundColor = colorLightGreen;
+
         };
         var darkGreen = document.createElement("img");
         darkGreen.src = "js/jscoloring/img/swatches/darkgreen.jpg";
@@ -153,6 +162,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         darkGreen.className = "colorswatches";
         darkGreen.onclick = function(){
             curColor =  colorDarkGreen;
+            currentSwatch.style.backgroundColor = colorDarkGreen;
+
         };
 
         var yellow = document.createElement("img");
@@ -161,6 +172,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         yellow.className = "colorswatches";
         yellow.onclick = function(){
             curColor =  colorYellow;
+            currentSwatch.style.backgroundColor = colorYellow;
+
         };
 
         var darkRed = document.createElement("img");
@@ -169,6 +182,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         darkRed.className = "colorswatches";
         darkRed.onclick = function(){
             curColor =  colorDarkRed;
+            currentSwatch.style.backgroundColor = colorDarkRed;
+
         };
 
         var red = document.createElement("img");
@@ -177,6 +192,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         red.className = "colorswatches";
         red.onclick = function(){
             curColor =  colorRed;
+            currentSwatch.style.backgroundColor = colorRed;
+
         };
 
         var orange = document.createElement("img");
@@ -185,6 +202,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         orange.className = "colorswatches";
         orange.onclick = function(){
             curColor =  colorOrange;
+            currentSwatch.style.backgroundColor = colorOrange;
+
         };
 
         var purple = document.createElement("img");
@@ -193,6 +212,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         purple.className = "colorswatches";
         purple.onclick = function(){
             curColor =  colorPurple;
+            currentSwatch.style.backgroundColor = colorPurple;
+
         };
 
         var magenta = document.createElement("img");
@@ -201,6 +222,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         magenta.className = "colorswatches";
         magenta.onclick = function(){
             curColor =  colorMagenta;
+            currentSwatch.style.backgroundColor = colorMagenta;
+
         };
 
         var pink = document.createElement("img");
@@ -209,6 +232,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         pink.className = "colorswatches";
         pink.onclick = function(){
             curColor =  colorPink;
+            currentSwatch.style.backgroundColor = colorPink;
+
         };
         var beige  = document.createElement("img");
         beige.src = "js/jscoloring/img/swatches/beige.jpg";
@@ -216,6 +241,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         beige.className = "colorswatches";
         beige.onclick = function(){
             curColor =  colorBeige;
+            currentSwatch.style.backgroundColor = colorBeige;
+
         };
 
         var lightGrey = document.createElement("img");
@@ -224,6 +251,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         lightGrey.className = "colorswatches";
         lightGrey.onclick = function(){
             curColor =  colorLightGrey;
+            currentSwatch.style.backgroundColor = colorLightGrey;
+
         };
 
         var darkGrey = document.createElement("img");
@@ -232,6 +261,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         darkGrey.className = "colorswatches";
         darkGrey.onclick = function(){
             curColor =  colorDarkGrey;
+            currentSwatch.style.backgroundColor = colorDarkGrey;
+
         };
 
         var darkBrown = document.createElement("img");
@@ -240,6 +271,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         darkBrown.className = "colorswatches";
         darkBrown.onclick = function(){
             curColor =  colorDarkBrown;
+            currentSwatch.style.backgroundColor = colorDarkBrown;
+
         };
 
         var lightBrown = document.createElement("img");
@@ -248,6 +281,8 @@ PWD.Coloring.prototype.renderCanvas=function(){
         lightBrown.className = "colorswatches";
         lightBrown.onclick = function(){
             curColor =  colorLightBrown;
+            currentSwatch.style.backgroundColor = colorLightBrown;
+
         };
 
 
@@ -271,6 +306,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         colorSwatches.appendChild(darkBrown);
         colorSwatches.appendChild(lightBrown);
 
+        base.contentDiv.appendChild(currentSwatch);
         base.contentDiv.appendChild(colorSwatches);
 
         base.smallSize = document.createElement("img");
@@ -350,12 +386,18 @@ PWD.Coloring.prototype.renderCanvas=function(){
     base.pen.onclick = function(){
         if(lastColor == colorWhite){
             curColor = colorBlack;
+            currentSwatch.style.backgroundColor = colorBlack;
+
         }
         else if(lastColor){
             curColor = lastColor;
+            currentSwatch.style.backgroundColor = lastColor;
+
         }
         else{
             curColor =  colorBlack;
+            currentSwatch.style.backgroundColor = colorBlack;
+
         }
         console.log("pen selected");
     };
@@ -364,6 +406,7 @@ PWD.Coloring.prototype.renderCanvas=function(){
         lastColor = curColor;
         console.log("eraser selected");
         curColor =  colorWhite;
+        currentSwatch.style.backgroundColor = colorWhite;
     };
 
 
